@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2022/03/16/DLstudy/%E7%BA%BF%E6%80%A7%E5%87%BD%E6%95%B0.png">
 <meta property="article:published_time" content="2022-03-16T08:23:45.000Z">
-<meta property="article:modified_time" content="2022-03-16T09:54:44.034Z">
+<meta property="article:modified_time" content="2022-03-19T16:04:50.715Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.8k字</span>
+        <span class="post-count">2.9k字</span>
       </span>
     </span>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">11分</span>
       </span>
     </span>
 </div>
@@ -316,6 +316,50 @@
 
 <blockquote>
 <p>注：虽然<code>view</code>返回的<code>Tensor</code>与源<code>Tensor</code>是共享<code>data</code>的，但是依然是一个新的<code>Tensor</code>（因为<code>Tensor</code>除了包含<code>data</code>外还有一些其他属性），二者id（内存地址）并不一致。</p>
+</blockquote>
+<h3 id="5-Tensor和NumPy相互转换"><a href="#5-Tensor和NumPy相互转换" class="headerlink" title="5.Tensor和NumPy相互转换"></a>5.<code>Tensor</code>和NumPy相互转换</h3><p>我们很容易用<code>numpy()</code>和<code>from_numpy()</code>将<code>Tensor</code>和NumPy中的数组相互转换。但是需要注意的一点是： <strong>这两个函数所产生的的<code>Tensor</code>和NumPy中的数组共享相同的内存（所以他们之间的转换很快），改变其中一个时另一个也会改变！！！</strong></p>
+<blockquote>
+<p>还有一个常用的将NumPy中的array转换成<code>Tensor</code>的方法就是<code>torch.tensor()</code>, 需要注意的是，此方法总是会进行数据拷贝（就会消耗更多的时间和空间），所以返回的<code>Tensor</code>和原来的数据不再共享内存。</p>
+</blockquote>
+<p>使用<code>numpy()</code>将<code>Tensor</code><strong>转换成NumPy数组</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">5</span>)</span><br><span class="line">b = a.numpy()</span><br><span class="line">print(a, b)</span><br><span class="line"></span><br><span class="line">a += <span class="number">1</span></span><br><span class="line">print(a, b)</span><br><span class="line">b += <span class="number">1</span></span><br><span class="line">print(a, b)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>from_numpy()</code>将NumPy数组<strong>转换成<code>Tensor</code></strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a = np.ones(<span class="number">5</span>)</span><br><span class="line">b = torch.from_numpy(a)</span><br><span class="line">print(a, b)</span><br><span class="line"></span><br><span class="line">a += <span class="number">1</span></span><br><span class="line">print(a, b)</span><br><span class="line">b += <span class="number">1</span></span><br><span class="line">print(a, b)</span><br></pre></td></tr></table></figure>
+
+<p>此外上面提到还有一个常用的方法就是直接用<code>torch.tensor()</code>将NumPy数组转换成<code>Tensor</code>，需要注意的是该方法总是会进行数据拷贝，返回的<code>Tensor</code>和原来的数据不再共享内存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c = torch.tensor(a)</span><br><span class="line">a += <span class="number">1</span></span><br><span class="line">print(a, c)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Tensor-on-GPU"><a href="#6-Tensor-on-GPU" class="headerlink" title="6.Tensor on GPU"></a>6.Tensor on GPU</h2><p>用方法<code>to()</code>可以将<code>Tensor</code>在CPU和GPU（需要硬件支持）之间相互移动。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">"cuda"</span>)          <span class="comment"># GPU</span></span><br><span class="line">    y = torch.ones_like(x, device=device)  <span class="comment"># 直接创建一个在GPU上的Tensor</span></span><br><span class="line">    x = x.to(device)                       <span class="comment"># 等价于 .to("cuda")</span></span><br><span class="line">    z = x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(<span class="string">"cpu"</span>, torch.double))       <span class="comment"># to()还可以同时更改数据类型</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="三-自动求梯度"><a href="#三-自动求梯度" class="headerlink" title="三.自动求梯度"></a>三.自动求梯度</h1><h2 id="1-Tensor"><a href="#1-Tensor" class="headerlink" title="1.Tensor"></a>1.Tensor</h2><p>创建一个<code>Tensor</code>并设置<code>requires_grad=True</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.ones(<span class="number">2</span>, <span class="number">2</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">print(x)</span><br><span class="line">print(x.grad_fn)</span><br></pre></td></tr></table></figure>
+
+<p>再做一下运算操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = x + <span class="number">2</span></span><br><span class="line">print(y)</span><br><span class="line">print(y.grad_fn)</span><br></pre></td></tr></table></figure>
+
+<p>注意x是直接创建的，所以它没有<code>grad_fn</code>, 而y是通过一个加法操作创建的，所以它有一个为``的<code>grad_fn</code>。</p>
+<p>像x这种直接创建的称为叶子节点，叶子节点对应的<code>grad_fn</code>是<code>None</code>。</p>
+<p>print(x.is_leaf, y.is_leaf) # True False</p>
+<p>再来点复杂度运算操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z = y * y * <span class="number">3</span></span><br><span class="line">out = z.mean()</span><br><span class="line">print(z, out)</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>.requires_grad_()</code>来用in-place的方式改变<code>requires_grad</code>属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = torch.randn(<span class="number">2</span>, <span class="number">2</span>) <span class="comment"># 缺失情况下默认 requires_grad = False</span></span><br><span class="line">a = ((a * <span class="number">3</span>) / (a - <span class="number">1</span>))</span><br><span class="line">print(a.requires_grad) <span class="comment"># False</span></span><br><span class="line">a.requires_grad_(<span class="literal">True</span>)</span><br><span class="line">print(a.requires_grad) <span class="comment"># True</span></span><br><span class="line">b = (a * a).sum()</span><br><span class="line">print(b.grad_fn)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-梯度"><a href="#2-梯度" class="headerlink" title="2.梯度"></a>2.梯度</h2><p>因为<code>out</code>是一个标量，所以调用<code>backward()</code>时不需要指定求导变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">out.backward() <span class="comment"># 等价于out.backward(torch.tensor(1.))</span></span><br></pre></td></tr></table></figure>
+
+<p>我们来看看<code>out</code>关于<code>x</code>的梯度 <em>[Math Processing Error]\frac{d(out)}{dx}<strong>d</strong>x**d</em>(<em>o<strong>u</strong>t</em>):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+
+<p> 注意：grad在反向传播过程中是累加的(accumulated)，这意味着每一次运行反向传播，梯度都会累加之前的梯度，所以一般在反向传播之前需把梯度清零。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 再来反向传播一次，注意grad是累加的</span></span><br><span class="line">out2 = x.sum()</span><br><span class="line">out2.backward()</span><br><span class="line">print(x.grad)</span><br><span class="line"></span><br><span class="line">out3 = x.sum()</span><br><span class="line">x.grad.data.zero_()</span><br><span class="line">out3.backward()</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
+
+<p>现在我们解释2.3.1节留下的问题，为什么在<code>y.backward()</code>时，如果<code>y</code>是标量，则不需要为<code>backward()</code>传入任何参数；否则，需要传入一个与<code>y</code>同形的<code>Tensor</code>? 简单来说就是为了避免向量（甚至更高维张量）对张量求导，而转换成标量对张量求导。举个例子，假设形状为 <code>m x n</code> 的矩阵 X 经过运算得到了 <code>p x q</code> 的矩阵 Y，Y 又经过运算得到了 <code>s x t</code> 的矩阵 Z。那么按照前面讲的规则，dZ/dY 应该是一个 <code>s x t x p x q</code> 四维张量，dY/dX 是一个 <code>p x q x m x n</code>的四维张量。问题来了，怎样反向传播？怎样将两个四维张量相乘？？？这要怎么乘？？？就算能解决两个四维张量怎么乘的问题，四维和三维的张量又怎么乘？导数的导数又怎么求，这一连串的问题，感觉要疯掉…… 为了避免这个问题，我们<strong>不允许张量对张量求导，只允许标量对张量求导，求导结果是和自变量同形的张量</strong>。所以必要时我们要把张量通过将所有张量的元素加权求和的方式转换为标量，举个例子，假设<code>y</code>由自变量<code>x</code>计算而来，<code>w</code>是和<code>y</code>同形的张量，则<code>y.backward(w)</code>的含义是：先计算<code>l = torch.sum(y * w)</code>，则<code>l</code>是个标量，然后求<code>l</code>对自变量<code>x</code>的导数</p>
+<blockquote>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/29923090" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29923090</a></p>
 </blockquote>
 
       
@@ -461,7 +505,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动手学深度学习笔记（PyTorch版）"><span class="toc-number">1.</span> <span class="toc-text">动手学深度学习笔记（PyTorch版）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-简介"><span class="toc-number">1.1.</span> <span class="toc-text">一.简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-起源"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-发展"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-特点"><span class="toc-number">1.1.3.</span> <span class="toc-text">3,特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-小结"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-数据操作"><span class="toc-number">1.2.</span> <span class="toc-text">二.数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建Tensor"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.创建Tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-算术操作"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.算术操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-广播机制"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 广播机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-运算的内存开销"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 运算的内存开销</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#动手学深度学习笔记（PyTorch版）"><span class="toc-number">1.</span> <span class="toc-text">动手学深度学习笔记（PyTorch版）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-简介"><span class="toc-number">1.1.</span> <span class="toc-text">一.简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-起源"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.起源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-发展"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-特点"><span class="toc-number">1.1.3.</span> <span class="toc-text">3,特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-小结"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-数据操作"><span class="toc-number">1.2.</span> <span class="toc-text">二.数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建Tensor"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.创建Tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-算术操作"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.算术操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-广播机制"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 广播机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-运算的内存开销"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 运算的内存开销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Tensor和NumPy相互转换"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.Tensor和NumPy相互转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Tensor-on-GPU"><span class="toc-number">1.3.</span> <span class="toc-text">6.Tensor on GPU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-自动求梯度"><span class="toc-number">2.</span> <span class="toc-text">三.自动求梯度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Tensor"><span class="toc-number">2.1.</span> <span class="toc-text">1.Tensor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-梯度"><span class="toc-number">2.2.</span> <span class="toc-text">2.梯度</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
