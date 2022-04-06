@@ -70,7 +70,7 @@
 			</ul>
 		</nav>
 <nav>
-    总文章数 6
+    总文章数 8
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -171,6 +171,310 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-深度学习常见概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/">深度学习常见概念</a>
+    </h1>
+  
+
+        
+         
+
+
+<a href="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/" class="archive-article-date">
+  	<time datetime="2022-04-04T12:29:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-04</time>
+</a>
+ <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->       
+ 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近学习了CBAM相关的内容，对注意力机制中常见概念记录一下。</p>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>卷积神经网络凭借其强大的特征提取和表达能力，在计算机视觉任务中取得了很好的应用效果，为了进一步提升CNNs的性能，近来的方法会从三个方面考虑：<strong>深度，宽度，基数。</strong></p>
+<p>在深度方面的探索由来已久，VGGNet证明，堆积相同形状的卷积块能取得不错的效果，基于同样的思想，ResNet在堆积的基础上，加入skip connection，通过残差学习，在保证性能不退化的基础上，大大加深了网络层数。<img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-4f61de5ca32841b3a94b692cafab2ff9_1440w.jpg" alt="v2-4f61de5ca32841b3a94b692cafab2ff9_1440w"></p>
+<p>在网络宽度方面，GoogleNet是一个重要尝试，该结构将CNN中常用的卷积（1x1，3x3，5x5）、池化操作（3x3）堆叠在一起（卷积、池化后的尺寸相同，将通道相加），增加了网络的宽度。<img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-e50b382e6b27206a1d6820def4d09b7a_1440w.jpg" alt="v2-e50b382e6b27206a1d6820def4d09b7a_1440w"></p>
+<p>在网络基数方面，Facebook家的ResNeXt是一个很好的工作，何为基数（cardinality）呢？Cardinatity指的是一个block中所具有的相同分支的数目。ResNeXt通过一系列实验证明了，加大基数能够达到甚至超越加大宽度和深度的效果，具有更强的特征表现能力。<img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-7d250d62d95d7eaa6117df7c6f59b6f2_1440w.jpg" alt="v2-7d250d62d95d7eaa6117df7c6f59b6f2_1440w"></p>
+<h4 id="空间域（-Spatial-Domain）"><a href="#空间域（-Spatial-Domain）" class="headerlink" title="空间域（ Spatial Domain）"></a><strong>空间域（ Spatial Domain）</strong></h4><p>空间域的设计思路是通过注意力机制，更关注的是位置特性。将原始图片中的空间信息通过空间转换模块，变换到另一个空间中并保留关键信息。</p>
+<h4 id="通道域（Channel-Domain）"><a href="#通道域（Channel-Domain）" class="headerlink" title="通道域（Channel Domain）"></a><strong>通道域（Channel Domain）</strong></h4><p>通道域的核心思想是，对经过卷积得到的特征图的每一层，乘以不同的权重，表示该层表示的特征对于关键信息的关联程度和重要程度，相应的，权重越大，表示该层表示的信息对于关键信息越重要，关联程度越高；权重越小，表示该层表示的信息对于关键信息越不重要。SeNet是典型的注意力机制模型，得到一个C维卷积层后，通过挤压函数，激励函数，尺度函数，得到每一维的权重，对应乘到不同通道的值上，得到新的特征。</p>
+<p><strong>注意力机制不仅告诉你应该关注哪里，而且还会提升关键区域的特征表达</strong>。这也与识别的目标一致，只关注重要的特征而抑制或忽视无关特征。这样的思想，促成了本文提出的CBAM网络（Convolutional Block Attention Module）。如下图所示，依次用到注意力机制中的通道域模块和空间域模块，通过这两个模块，得到细化后的feature。网络具有了学习“What”和“Where”的能力，让网络更好的知道哪些信息需要强调，哪些信息需要抑制。</p>
+<ul>
+<li><strong>Channel attention module.</strong></li>
+</ul>
+<p><strong>核心思想：</strong>利用特征的通道间关系，生成通道注意图</p>
+<p><strong>输入</strong>：C维 feature map</p>
+<p><strong>输出</strong>：1x1xC channel attention map</p>
+<p><strong>步骤：</strong></p>
+<p><strong>（1）</strong>对于输入feature map，分别进行平均池化和最大值池化聚合空间信息，得到两个C维池化特征图，F_avg和F_max。</p>
+<p><strong>（2）</strong>将F_avg和F_max送入包含一个隐层的多层感知器MLP里，得到两个1x1xC的通道注意力图。其中，为了减少参数量，隐层神经元的个数为C/r，r也被称作压缩比。</p>
+<p><strong>（3）</strong>将经过MLP得到的两个通道注意力图进行对应元素相加，激活，得到最终的通道注意力图Mc。</p>
+<p><em>MLP理解：<a href="https://blog.csdn.net/sdsc1314/article/details/106742705" target="_blank" rel="noopener">https://blog.csdn.net/sdsc1314/article/details/106742705</a></em></p>
+<p><strong>几个答疑</strong>：</p>
+<p><strong>（1）为什么要对输入特征进行平均池化和最大池化两种处理方式？</strong></p>
+<p>为了更好的聚合feature map的信息并减少参数量，池化是必不可少的步骤，对于空间信息的聚合，目前普遍采用的是平均池化的方法，但作者认为，最大池化会收集到不同于平均池化的，关于不同目标特征的表示，这对于后续得到更精细的注意力通道图是有帮助的。实验也表明，对于平均池化和最大池化的综合运用，是有助于性能提升的。</p>
+<p><strong>（2）MLP的结构是如何设计的？</strong></p>
+<p>本文用到的是只有一层hidden layer的MLP，非常简单，以W0和W1分别表示隐层权重和输出层权重，那么属性可以表示为：</p>
+<p><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-89f01a059e33f95f7df961868f829c98_720w.png" alt="img"></p>
+<p>此外，W0和W1的参数是共享的。</p>
+<p><strong>综上，通道注意力模块更关注的是“What”属性，也就是什么是对于后续处理有意义的。经过Channel Attention Module之后，我们得到的是一个1x1xC的通道注意力图，图上每一维的权重，表示该维对应的feature map层中，对于关键信息的重要程度和关联程度。</strong></p>
+<ul>
+<li><strong>Spatial attention module.</strong></li>
+</ul>
+<p><strong>核心思想：</strong>利用特征间的空间关系生成空间注意图</p>
+<p><strong>输入</strong>：Channel-refined feature <strong>F’</strong>（经过通道注意力图细化后的feature map）</p>
+<p><strong>输出</strong>：HxW的spatial map</p>
+<p><strong>步骤：</strong></p>
+<p><strong>（1）</strong>对于F’首先沿着通道方向进行最大池化和平均池化，得到两个二维的feature map F_avg和F_max，属性都是1xHxW，将得到的两个feature map进行维度拼接（concatenate），得到拼接后的feature map。</p>
+<p><strong>（2）</strong>对于拼接后的feature map，利用size为7x7的卷积层生成空间注意力图Ms。</p>
+<p><strong>公式表示：</strong></p>
+<p><img src="https://pic3.zhimg.com/80/v2-c5ba8e3165eef444b1393b467e7442b6_720w.jpg" alt="img"></p>
+<p><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-aeb1ee25a324e80863d977924acb5db5_720w.jpg" alt="img"></p>
+<p><strong>几个答疑：</strong></p>
+<p><strong>（1）为什么要沿着维度通道进行平均池化和最大池化？</strong></p>
+<p>作者借鉴ICLR2017的论文《Paying more attention to attention: Improving the performance of convolutional neural networks via attention transfer》，认为沿着通道轴应用池化操作可以有效地突出显示含有关键信息的区域。作者的实验也支持这一观点。</p>
+<p><strong>（2）维度拼接（Concatenate）具体操作过程？</strong></p>
+<p>Concatenate的具体操作是将两个size相同的feature map，在维度方向进行拼接，拼接完成后，新的特征图的通道会是原来两个特征图通道之和。这种操作是进行特征融合的普遍做法。</p>
+<p><strong>综上，空间注意力模块更关注的是“Where”，即哪些位置有关键信息，这对于前面的关注“What”的通道注意力模块是一个补充，成为网络的左膀右臂。</strong></p>
+<ul>
+<li><strong>Arrangement of attention modules</strong></li>
+</ul>
+<p>我们介绍了通道注意力模块和空间注意力模块，两个模块用什么方式组合是最优的呢？并行还是连续，不同的组合方式会影响网络的表现，作者做了一系列实验表明，<strong>顺序排列比并行排列的结果更好。</strong></p>
+<h4 id="Faster-R-CNN-FPN"><a href="#Faster-R-CNN-FPN" class="headerlink" title="Faster R-CNN-FPN"></a>Faster R-CNN-FPN</h4><p>解读：<a href="http://events.jianshu.io/p/aa659406d8c4" target="_blank" rel="noopener">http://events.jianshu.io/p/aa659406d8c4</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python/" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DL-RPN" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/28/DL-RPN/">DL-RPN</a>
+    </h1>
+  
+
+        
+         
+
+
+<a href="/2022/03/28/DL-RPN/" class="archive-article-date">
+  	<time datetime="2022-03-28T07:14:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-28</time>
+</a>
+ <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->       
+ 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在学习faster R-CNN时遇到了RPN<strong>区域推荐网络</strong>，记录一下。</p>
+<p>在faster R-CNN引入了RPN后，它能够利用Backbone出来的卷积层featuremap学习出proposal cadidates，这个方法取代传统的离线方式，并且能够很方便的整合到任何目标检测网络中，实现e2e训练。</p>
+<p>![img](DL-RPN/faster R-CNN)</p>
+<blockquote>
+<p>​                                    faster R-CNN 结构图</p>
+</blockquote>
+<p>RPN在结构中是用来生成一系列proposals的一层，本质上它是Backbone的最后一层卷积层作为输入，proposal的具体位置作为输出的神经网络。</p>
+<p>RPN主要包含以下几步：</p>
+<ul>
+<li>生成Anchor boxes.</li>
+<li>判断anchor boxes包含的是前景还是背景.</li>
+<li>回归学习anchor boxes和groud truth的标注的位置差，来精确定位物体</li>
+</ul>
+<p>首先介绍下什么是anchor和anchor boxes。每个anchor点就是backbone网络最后一层卷积层feature map上的元素点。而anchor boxes是以anchor为中心点而生成的一系列框boxes。一个anchor对应的框的具体数量是由scales和aspect ratios 2个参数控制。scales指的是对于每种形状，框体最长边的像素大小，aspect ratios指的是具体由哪些形状，描述的是长宽比。所以scales[8,16,32] 和ratios [0.5,1,2]就代表一个anchor会生成9个anchor boxes。注意的是anchor boxes的坐标是对应在原图尺寸上的，而feature map相比原图是缩小很多倍的，比如VGG16,backbone网络出来的图片尺寸比原图缩小了16倍，如果在原图中采anchor boxes，就需要按16像素点跳着采样。</p>
+<p><strong>RPN的核心概念——anchor</strong></p>
+<p>有一些参考文献说Anchor 是大小和尺寸固定的候选框，这种说法有一定道理，但不准确。在回答什么是anchor之前，先看一下RPN网络的一个第一步运算，RPN的第一步运算实际上就是一个3<em>3</em>256的卷积运算，我们称3<em>3为一个滑动窗口（sliding window)，假设RPN的输入是13</em>13<em>256的特征图，然后使用3</em>3<em>256的卷积核进行卷积运算，最后依然会得到一个a</em>a*256的特征图，这里的a与卷积的步长有关。</p>
+<pre><code>在原始论文中，作者选定了3种不同scale,3种不同宽高比（aspect ratios)的矩形框作为“基本候选框”，</code></pre><p>三种scale/size是{128，256，512}</p>
+<p>三种比例{1：1， 1：2， 2：1}</p>
+<p>故而一共是3x3=9种，很明显，这9种基本候选框的长宽远远大于特征图的长宽，所以这9个指的应该是原始图像。</p>
+<p>有了anchor boxes还不够，这些框体大多都都没有包含目标物体，所以我们需要模型学习判断box是否包含物体（即是前景图片还是背景图片），同时对于前景图片我们还要学习来预测box和GT的offset。这2个任务分别是用2个卷积网络实现的，如下图所示，</p>
+<p>![img](DL-RPN/cls-reg layer)</p>
+<p>​                                    <em>cls layer和reg layer</em></p>
+<p>假设每个anchor生成了k个boxes，每个anchor box会输入到2个卷积网络，分别是cls layaer和reg layer。</p>
+<p><img src="/2022/03/28/DL-RPN/convolution" alt="img"></p>
+<p>cls layer是前景判断任务，最后会输出每个anchor box的前景分数和背景分数。以上图为例，假设anchor boxes数量是9，经过cls layer的1<em>1</em>18卷积核输出就是H<em>W</em>18的feature map，每个anchor的维度是18=2*9，就代表每个anchor作为前景和背景的分数。</p>
+<p>而reg layer的输出是boxes与GT的（x,y,w,h）的offsets，（x,y）是box中心点的坐标。（w,h）是宽和高。以上图为例，经过reg layer的1<em>1</em>36的卷积核之后输出的是H<em>W</em>36的feature map，每个anchor的维度是36=4*9，也就代表了（w,y,w,h）的offsets。anchor boxes会根据模型预测出来的offset来调整尺寸，作为RPN的输出。</p>
+<p>RPN的训练数据是通过比较anchor boxes和GT boxes生成的，会在图片中采样一些anchor boxes，然后计算anchor box和GT box的IOU来判断该box是前景还是背景，对于是前景的box还要计算其与GT box之间各个坐标offset。训练数据一般按照正负样例1：3的比例来训练模型。下图是最终的损失函数表达式，包含了前景判断和坐标回归，前者训练使用的损失函数是交叉熵损失函数cross-entropy loss，后者用的是smooth l1 loss。</p>
+<p><img src="/2022/03/28/DL-RPN/loss" alt="img"></p>
+<p>上图前半段是前景判断loss，pi指的是前景的概率分数，*是GT的值。后半段loss是坐标的分类模型loss，t是各坐标的vector向量。</p>
+<p>作用：在faster rcnn里面，anchor（或者说RPN网络）的作用是代替以往rcnn使用的selective search的方法寻找图片里面可能存在物体的区域。当一张图片输入resnet或者vgg，在最后一层的feature map上面，寻找可能出现物体的位置，这时候分别以这张feature map的每一个点为中心，在原图上画出9个尺寸不一anchor。然后计算anchor与GT（ground truth） box的iou（重叠率），满足一定iou条件的anchor，便认为是这个anchor包含了某个物体。</p>
+<p>目标检测的思想是，首先在图片中寻找<strong>“可能存在物体的位置（regions）”</strong>，然后再判断<strong>“这个位置里面的物体是什么东西”</strong>，所以region proposal就参与了判断物体可能存在位置的过程。</p>
+<p><strong>region proposal是让模型学会去看哪里有物体，GT box就是给它进行参考，告诉它是不是看错了，该往哪些地方看才对。</strong></p>
+<p>参考：</p>
+<p>链接：<a href="https://blog.csdn.net/weixin_38145317/article/details/90753704" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38145317/article/details/90753704</a></p>
+<p>链接：<a href="https://www.zhihu.com/question/265345106/answer/292998341" target="_blank" rel="noopener">https://www.zhihu.com/question/265345106/answer/292998341</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/338217417" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/338217417</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python/" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/28/DL-RPN/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-DLstudy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
