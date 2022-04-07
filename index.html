@@ -197,7 +197,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.7k字</span>
+        <span class="post-count">2k字</span>
       </span>
     </span>
 
@@ -206,7 +206,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
 </div>
@@ -267,6 +267,20 @@
 </ul>
 <p>我们介绍了通道注意力模块和空间注意力模块，两个模块用什么方式组合是最优的呢？并行还是连续，不同的组合方式会影响网络的表现，作者做了一系列实验表明，<strong>顺序排列比并行排列的结果更好。</strong></p>
 <h4 id="Faster-R-CNN-FPN"><a href="#Faster-R-CNN-FPN" class="headerlink" title="Faster R-CNN-FPN"></a>Faster R-CNN-FPN</h4><p>解读：<a href="http://events.jianshu.io/p/aa659406d8c4" target="_blank" rel="noopener">http://events.jianshu.io/p/aa659406d8c4</a></p>
+<h4 id="卷积核和过滤器的区别"><a href="#卷积核和过滤器的区别" class="headerlink" title="卷积核和过滤器的区别"></a>卷积核和过滤器的区别</h4><p><a href="https://medlen.blog.csdn.net/article/details/109906338" target="_blank" rel="noopener">https://medlen.blog.csdn.net/article/details/109906338</a></p>
+<ul>
+<li><a href="https://so.csdn.net/so/search?q=卷积核&spm=1001.2101.3001.7020" target="_blank" rel="noopener">卷积核</a>就是由长和宽来指定的，是一个二维的概念。</li>
+<li>而过滤器是是由长、宽和深度指定的，是一个三维的概念。</li>
+<li>过滤器可以看做是卷积核的<a href="https://so.csdn.net/so/search?q=集合&spm=1001.2101.3001.7020" target="_blank" rel="noopener">集合</a>。</li>
+<li>过滤器比卷积核高一个<a href="https://so.csdn.net/so/search?q=维度&spm=1001.2101.3001.7020" target="_blank" rel="noopener">维度</a>——深度。</li>
+</ul>
+<h4 id="1x1卷积核作用"><a href="#1x1卷积核作用" class="headerlink" title="1x1卷积核作用"></a>1x1卷积核作用</h4><p><a href="https://zhuanlan.zhihu.com/p/40050371" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/40050371</a></p>
+<p><strong>降维/升维</strong></p>
+<h4 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h4><p><a href="https://zhuanlan.zhihu.com/p/58381421" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/58381421</a></p>
+<h4 id="前向传播和反向传博算法"><a href="#前向传播和反向传博算法" class="headerlink" title="前向传播和反向传博算法"></a>前向传播和反向传博算法</h4><p><a href="https://blog.csdn.net/bitcarmanlee/article/details/78819025" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/78819025</a></p>
+<h4 id="resnet-mmdet解读"><a href="#resnet-mmdet解读" class="headerlink" title="resnet-mmdet解读"></a>resnet-mmdet解读</h4><p><a href="https://blog.csdn.net/cc__cc__/article/details/105470864?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;utm_relevant_index=5" target="_blank" rel="noopener">https://blog.csdn.net/cc__cc__/article/details/105470864?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;utm_relevant_index=5</a></p>
+<p>一、ResNet网络中的两种基本残差块<br>由网络结构图可以看出，ResNet-18和ResNet-34使用的为包含2个3×3卷积层的残差块，在源码中对应BasicBlock<br>而更深层的ResNet-50，ResNet-101，ResNet-152使用的残差块则略微复杂一些，在源码中对应Bottleneck</p>
+<p><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NjX19jY19f,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
 
       
 
