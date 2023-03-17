@@ -6,6 +6,7 @@ tags: 深度学习
 ---
 
 在学习faster R-CNN时遇到了RPN**区域推荐网络**，记录一下。
+<!--more-->
 
 在faster R-CNN引入了RPN后，它能够利用Backbone出来的卷积层featuremap学习出proposal cadidates，这个方法取代传统的离线方式，并且能够很方便的整合到任何目标检测网络中，实现e2e训练。
 
