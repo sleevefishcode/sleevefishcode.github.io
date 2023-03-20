@@ -24,5 +24,7 @@ C:\Users\11357\blog\themes\hexo-theme-yilia中config.yml修改
 9.node版本不能过高，否则会出现GitHub上网页为0kb
 可以使用nvm管理node版本，注意重启终端后需要使用nvm use来使用低版本，否则会默认
 https://www.jianshu.com/p/fc6f5a132bf0
+10.创建新分类
+hexo new page categories/tags
 -------------
 仅收集整理部分。
