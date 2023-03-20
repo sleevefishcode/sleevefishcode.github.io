@@ -3,9 +3,9 @@
 menu:
   主页: /index.html
   Paper : /categories/paper/
+  Python: /categories/python/
   随笔: /tags/随笔/
   心得: /tags/project/
-  Python: /categories/python/
   归档: /archives/index.html
 
 # SubNav
@@ -69,10 +69,10 @@ top: true
 # Miscellaneous
 baidu_analytics: ''
 google_analytics: ''
-favicon: /favicon.png
+favicon: /img/s.jpeg
 
 #你的头像url
-avatar: /assets/img/head.jpg
+avatar: /img/head.jpg
 
 #是否开启分享
 share_jia: true

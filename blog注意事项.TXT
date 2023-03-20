@@ -19,6 +19,10 @@ https://blog.csdn.net/lynnbest/article/details/79845944
 https://www.cnblogs.com/hankleo/p/11606224.html
 7.侧边栏显示标签及分类
 C:\Users\11357\blog\themes\hexo-theme-yilia中config.yml修改
-8.新建文章推荐使用hexo n指令，方便图片插入，图片插入
+8.新建文章推荐使用hexo n指令，方便图片插入，
+图片插入注意将图片保存到与面对同名的文件夹内，使用时可以相对路径或者直接使用文件名
+9.node版本不能过高，否则会出现GitHub上网页为0kb
+可以使用nvm管理node版本，注意重启终端后需要使用nvm use来使用低版本，否则会默认
+https://www.jianshu.com/p/fc6f5a132bf0
 -------------
 仅收集整理部分。
