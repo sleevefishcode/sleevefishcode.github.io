@@ -17,8 +17,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE1.png">
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE2.png">
+<meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f3.png">
+<meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f4.png">
 <meta property="article:published_time" content="2023-03-20T07:28:05.000Z">
-<meta property="article:modified_time" content="2023-03-20T09:10:02.685Z">
+<meta property="article:modified_time" content="2023-03-21T08:54:58.095Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="TUL">
 <meta name="twitter:card" content="summary">
@@ -212,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.2k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -221,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -262,6 +264,17 @@
 <p><strong>组件2</strong>:为了充分利用路网的拓扑信息，我们开发了一个权重感知的GNN模块来学习RTSG中节点的表示。与朴素 GNN [36] 不同，我们在节点采样之前基于 Renyi 熵计算每条边的权重，目的是提高节点嵌入的性能。</p>
 <p><strong>组件3</strong>:我们开发了一个基于bilstm的模块，以充分利用轨迹中涉及的顺序特征。最终输出轨迹表示eτ将被送入下一个模块。</p>
 <p><strong>组件 4</strong>：多类分类模块，该模块基于完全连接的神经网络和 softmax 函数设计，经过训练可以将每个轨迹链接到其所有者。</p>
+<h1 id="Proposed-model-TULRN"><a href="#Proposed-model-TULRN" class="headerlink" title="Proposed model TULRN"></a>Proposed model TULRN</h1><p>我们首先将每个轨迹转化为一系列路段。在变换之前，我们需要进行路网匹配，即将轨迹的样本点与路网对齐,为了有效地实现匹配，在本工作中，我们采用了最先进的模型(Hidden Markov map matching through noise and sparseness)基于隐马尔可夫模型并且代码可获得。</p>
+<p>本研究的<strong>核心</strong>部分是通过精心设计的深度学习模块将轨迹与其所有者联系起来，因此这里省略了输入数据的预处理(即映射匹配)的细节。经过映射匹配，我们得到S中的每个轨迹τ的轨迹序列TS(τ)</p>
+<h2 id="Construction-of-the-graph-RTSG"><a href="#Construction-of-the-graph-RTSG" class="headerlink" title="Construction of the graph RTSG"></a>Construction of the graph RTSG</h2><p>在地图匹配之后，我们构建了一个道路网络感知的轨迹序列图RTSG。具体来说，我们将轨迹序列TS(τ)的每个路段连接到图G中的一条边，并将TS(τ)的每个交叉口连接到G的一个节点。最后，通过将所有轨迹序列与给定的路网图合并，得到图RTSG</p>
+<h2 id="Node-embedding"><a href="#Node-embedding" class="headerlink" title="Node embedding"></a>Node embedding</h2><p>大多数 GNN 模型，他们只考虑图的节点特征而忽略了边特征。为了获得固定长度的节点序列进行学习，这些方法通常使用邻接矩阵根据节点的邻居进行采样，并在采样过程中忽略边权重。当整个图中的节点数量很大时，这些方法倾向于对不可标记的节点进行采样并省略唯一节点，这将导致图特征信息的严重丢失。在观察到现有工作的缺点后，我们设计了一种<strong>基于边权重的新型采样策略</strong>。</p>
+<p>我们认为，图RTSG中用户访问过的边并不同等重要。对应于热点路段的边缘通常无用于区分用户和其他用户，而较少用户访问的边缘更具区分性。基于这一思想，我们提出用<strong>熵来计算边权重</strong>，这是每个消息中包含的信息相对于消息的重要性的期望值（即接收的每条消息中包含的信息的平均量，是不确定性的量度–wiki）。Shannon熵是一种典型的熵，它是一种常见的工具，在许多应用中得到了广泛的应用，Renyi熵是它的推广版本，已被证明是更强大的。</p>
+<p>边$ e$ 的 Renyi 熵定义如下,$u_i$为用户：</p>
+<p><img src="/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f3.png" alt="img"></p>
+<p>其中 $N_{ui} (e)$ 是 $u_i$ 通过与 e 对应的道路段的次数，$M_{ui}$ 表示 $u_i$ 访问过的道路段总数。参数 q 使 Renyi 熵比香农熵更具表现力和灵活性，这表明熵对数字$ N_{ui} (e)$ 的敏感性</p>
+<p>给出了<strong>边权</strong>$w(e)$的定义如下:</p>
+<p><img src="/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f4.png" alt="img"></p>
+<p>除了边权重计算外，我们还在采样前根据词嵌入为RTSG中的每个节点$e_i$构造一个特征向量$f_i$。接下来，为了获得具有交互信息的每个节点的复杂表示，我们根据RTSG中从大到小的权重对边进行排序。在聚合过程中，我们对具有不同概率的节点进行采样，即权重较大的节点更有可能被采样，反之亦然</p>
 
       
 
@@ -406,7 +419,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Related-work"><span class="toc-number">3.</span> <span class="toc-text">Related work</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Trajectory-representation-learning"><span class="toc-number">3.1.</span> <span class="toc-text">Trajectory representation learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trajectory-user-linking"><span class="toc-number">3.2.</span> <span class="toc-text">Trajectory user linking</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preliminaries"><span class="toc-number">4.</span> <span class="toc-text">Preliminaries</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-definition"><span class="toc-number">4.1.</span> <span class="toc-text">Problem definition</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Overview-of-TULRN"><span class="toc-number">5.</span> <span class="toc-text">Overview of TULRN</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Related-work"><span class="toc-number">3.</span> <span class="toc-text">Related work</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Trajectory-representation-learning"><span class="toc-number">3.1.</span> <span class="toc-text">Trajectory representation learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trajectory-user-linking"><span class="toc-number">3.2.</span> <span class="toc-text">Trajectory user linking</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preliminaries"><span class="toc-number">4.</span> <span class="toc-text">Preliminaries</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem-definition"><span class="toc-number">4.1.</span> <span class="toc-text">Problem definition</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Overview-of-TULRN"><span class="toc-number">5.</span> <span class="toc-text">Overview of TULRN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Proposed-model-TULRN"><span class="toc-number">6.</span> <span class="toc-text">Proposed model TULRN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Construction-of-the-graph-RTSG"><span class="toc-number">6.1.</span> <span class="toc-text">Construction of the graph RTSG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-embedding"><span class="toc-number">6.2.</span> <span class="toc-text">Node embedding</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
