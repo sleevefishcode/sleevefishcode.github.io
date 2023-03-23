@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f5.png">
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE3">
 <meta property="article:published_time" content="2023-03-20T07:28:05.000Z">
-<meta property="article:modified_time" content="2023-03-22T09:09:30.490Z">
+<meta property="article:modified_time" content="2023-03-23T04:50:42.362Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="TUL">
 <meta name="twitter:card" content="summary">
@@ -239,6 +239,8 @@
         <p>发表于www（2022）Topical Collection: Special Issue on Spatiotemporal Data Management and Analytics for Recommend</p>
 <p><a href="https://link.springer.com/article/10.1007/s11280-022-01124-0" target="_blank" rel="noopener" title="论文地址">TULRN: Trajectory user linking on road networks | SpringerLink</a></p>
 <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>为了更有效地解决轨迹用户链接(TUL)问题，我们提出了一种<strong>基于GNN(图神经网络)和BiLSTM(双向长短期记忆)的新型半监督模型TULRN</strong>(道路网络轨迹用户链接)。我们的研究与现有研究的主要区别在于，本文将TUL问题扩展到道路网络上，统一地充分<strong>利用了道路网络的结构和轨迹的顺序特征</strong>。扩展的原因是现实生活中许多轨迹通常是在道路网络上生成的，基于这些轨迹我们可以更精确地建模轨迹与用户之间的关系。具体而言，我们提出的模型TULRN包含四个主要组成部分:(1)将每个轨迹转换为道路段序列，构建路网感知的轨迹序列图RTSG;(2)使用权重感知GNN模块学习RTSG中节点的表示;(3)利用基于bilstm的模块学习轨迹的表示;(4)基于每个轨迹的嵌入，将轨迹与用户连接起来。在真实数据集上进行的大量实验表明，所提出的模型TULRN比最先进的方法表现得更好。</p>
+<a id="more"></a>
+
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>从轨迹数据中可以发现移动个体和群体的流动模式，为基于位置的服务、人群管理、旅游监测等相关应用领域的研究提供方法和决策指导。它已成为数据挖掘领域的研究热点，引起了学术界的广泛关注。近年来，一些研究者开始关注轨迹用户链接(TUL)，因为其带来的显著好处，如在基于位置的社交网络[19]上进行下一次访问位置预测[14-18]和好友推荐。</p>
 <p>过去的研究为解决道路交通问题做出了巨大贡献，但没有一项研究是针对道路网络的问题。不幸的是，在现实生活中，大多数轨迹是由许多不同的车辆在道路网络上生成的，如公共汽车、汽车和出租车</p>
 <p>具体来说，研究道路网络上的TUL问题的原因有三个方面。</p>
