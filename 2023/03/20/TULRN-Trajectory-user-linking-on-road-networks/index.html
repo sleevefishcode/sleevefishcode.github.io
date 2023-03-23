@@ -19,10 +19,10 @@
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE2.png">
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f3.png">
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f4.png">
-<meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f5.png">
+<meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE5.png">
 <meta property="og:image" content="http://yoursite.com/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE3.png">
 <meta property="article:published_time" content="2023-03-20T07:28:05.000Z">
-<meta property="article:modified_time" content="2023-03-23T04:59:13.685Z">
+<meta property="article:modified_time" content="2023-03-23T05:02:14.329Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="TUL">
 <meta name="twitter:card" content="summary">
@@ -280,7 +280,7 @@
 <p><img src="/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f4.png" alt="img"></p>
 <p>除了边权重计算外，我们还在采样前根据词嵌入为RTSG中的每个节点$e_i$构造一个特征向量$f_i$。接下来，为了获得具有交互信息的每个节点的复杂表示，我们根据RTSG中从大到小的权重对边进行排序。在聚合过程中，我们对具有不同概率的节点进行采样，即权重较大的节点更有可能被采样，反之亦然</p>
 <p>特征矩阵$ F$ = {f1, f2, · · · , $f_n$} 为每个采样点提供初始输入。假设第 k 层采样点 $p_i$（即 RTSG 中的一个节点）的表示为 $h^k_i$ ，{$h^k_ N$ } 表示第 k 层 $p_i$ 采样的节点序列的表示(个人理解是包含该采样点的轨迹表示)，第 (k + 1) 层采样点 $p_i$ 的表示为</p>
-<p><img src="/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/f5.png" alt="img"></p>
+<p><img src="/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE5.png" alt="img"></p>
 <p>在节点嵌入之后，我们可以获得基于轨迹序列的轨迹表示。作为说明，图3中的红色和蓝色虚线分别表示RTSG中τ1和τ2的轨迹序列。然后，我们可以通过连接p3、p4、p5和p7的嵌入来获得轨迹表示$e_{τ1}$。类似地，表示$e_{τ2}$是通过连接p7、p6、p1和p3的嵌入而获得的</p>
 <p><img src="/2023/03/20/TULRN-Trajectory-user-linking-on-road-networks/%E5%9B%BE3.png" alt="img"></p>
 
