@@ -99,8 +99,8 @@ TUL问题在[20]中首次被引入，作者提出了一种基于rnn的半监督�
 
 特征矩阵$ F$ = {f1, f2, · · · , $f_n$} 为每个采样点提供初始输入。假设第 k 层采样点 $p_i$（即 RTSG 中的一个节点）的表示为 $h^k_i$ ，{$h^k_ N$ } 表示第 k 层 $p_i$ 采样的节点序列的表示(个人理解是包含该采样点的轨迹表示)，第 (k + 1) 层采样点 $p_i$ 的表示为
 
-![img](TULRN-Trajectory-user-linking-on-road-networks/f5.png)
+![img](TULRN-Trajectory-user-linking-on-road-networks/图5.png)
 
 在节点嵌入之后，我们可以获得基于轨迹序列的轨迹表示。作为说明，图3中的红色和蓝色虚线分别表示RTSG中τ1和τ2的轨迹序列。然后，我们可以通过连接p3、p4、p5和p7的嵌入来获得轨迹表示$e_{τ1}$。类似地，表示$e_{τ2}$是通过连接p7、p6、p1和p3的嵌入而获得的
 
-![img](TULRN-Trajectory-user-linking-on-road-networks/图3)
+![img](TULRN-Trajectory-user-linking-on-road-networks/图3.png)
