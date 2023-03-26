@@ -2,7 +2,7 @@
 title: 'TULRN: Trajectory user linking on road networks'
 date: 2023-03-20 15:28:05
 categories: paper
-tags: TUL,Representation learning,Road networks
+tags: [TUL,Representation learning,Road networks]
 ---
 发表于www（2022）Topical Collection: Special Issue on Spatiotemporal Data Management and Analytics for Recommend
 
