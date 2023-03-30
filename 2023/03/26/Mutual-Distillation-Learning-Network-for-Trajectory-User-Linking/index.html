@@ -8,17 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Mutual Distillation Learning Network for Trajectory-User Linking | S.F blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一种新的相互蒸馏学习网络来解决稀疏签到移动数据的 TUL 问题，称为 MainTUL。具体来说，MainTUL 由循环神经网络 (RNN) 轨迹编码器组成，该编码器对输入轨迹的顺序模式">
+  <meta name="description" content="发表于( IJCAI 2022 ) https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2205.03773 code:https:&#x2F;&#x2F;github.com&#x2F;Onedean&#x2F;MainTUL 摘要由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mutual Distillation Learning Network for Trajectory-User Linking">
 <meta property="og:url" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/index.html">
 <meta property="og:site_name" content="S.F blog">
-<meta property="og:description" content="摘要由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一种新的相互蒸馏学习网络来解决稀疏签到移动数据的 TUL 问题，称为 MainTUL。具体来说，MainTUL 由循环神经网络 (RNN) 轨迹编码器组成，该编码器对输入轨迹的顺序模式">
+<meta property="og:description" content="发表于( IJCAI 2022 ) https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2205.03773 code:https:&#x2F;&#x2F;github.com&#x2F;Onedean&#x2F;MainTUL 摘要由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f1.PNG">
 <meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f2.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f3.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f4.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f5.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f6.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f7.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f8.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f9.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f10.PNG">
 <meta property="article:published_time" content="2023-03-26T08:41:06.000Z">
-<meta property="article:modified_time" content="2023-03-29T09:08:51.753Z">
+<meta property="article:modified_time" content="2023-03-30T10:03:49.423Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="TUL">
 <meta name="twitter:card" content="summary">
@@ -212,7 +220,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -221,7 +229,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -232,7 +240,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一种新的<strong>相互蒸馏学习网络</strong>来解决稀疏签到移动数据的 TUL 问题，称为 MainTUL。具体来说，MainTUL 由循环神经网络 (RNN) 轨迹编码器组成，该编码器对输入轨迹的顺序模式和捕获相应增强历史轨迹的长期时间依赖性的时间感知 Transformer 轨迹编码器。然后，在两个轨迹编码器之间传递在历史轨迹上学到的知识来指导两个编码器的学习，以实现信息的相互蒸馏。</p>
+        <p>发表于( <strong>IJCAI 2022</strong> )</p>
+<p><a href="https://arxiv.org/abs/2205.03773" target="_blank" rel="noopener">https://arxiv.org/abs/2205.03773</a></p>
+<p>code:<a href="https://github.com/Onedean/MainTUL" target="_blank" rel="noopener">https://github.com/Onedean/MainTUL</a></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一种新的<strong>相互蒸馏学习网络</strong>来解决稀疏签到移动数据的 TUL 问题，称为 MainTUL。具体来说，MainTUL 由循环神经网络 (RNN) 轨迹编码器组成，该编码器对输入轨迹的顺序模式和捕获相应增强历史轨迹的长期时间依赖性的时间感知 Transformer 轨迹编码器。然后，在两个轨迹编码器之间传递在历史轨迹上学到的知识来指导两个编码器的学习，以实现信息的相互蒸馏。</p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在这项工作中，我们有兴趣将轨迹与其潜在用户联系起来以检查流动性数据。TUL 本质上可以看作是传统轨迹分类任务的扩展。传统的轨迹测量方法，例如最长公共子序列 (LCSS) 和动态时间规整 (DTW)，可以通过测量未知轨迹和已知轨迹之间的相似性来识别最可能的用户。</p>
 <p>然而，现有的方法仍然有<strong>三个关键的局限性</strong>。首先，所有现有的方法仍然存在数据稀疏的问题，并且在稀疏的签入移动数据集上表现不佳。</p>
 <p>第二，现有方法只关注空间和/或时间特征，而忽略了POI类别等签到数据中丰富的上下文特征。</p>
@@ -255,11 +266,35 @@
 <h1 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h1><p>MainTUL 的架构如图 1 所示。 MainTUL 包含三个主要组件：签到嵌入、轨迹编码器和相互蒸馏网络。</p>
 <p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f2.PNG" alt="img"></p>
 <h2 id="Multi-Semantic-Check-in-Embedding"><a href="#Multi-Semantic-Check-in-Embedding" class="headerlink" title="Multi-Semantic Check-in Embedding"></a>Multi-Semantic Check-in Embedding</h2><p>该模块包含两个子模块：轨迹增强和签到嵌入层。</p>
-<p><strong>Trajectory Augmentation</strong></p>
-<p>对于签到数据来说，由于其固有的稀疏性，一个时间窗口内子轨迹中的用户签到次数非常有限，而其长期的历史轨迹往往意味着更多的用户运动模式。因此，我们探索了两种不同的轨迹增强策略来生成相互蒸馏学习的长期轨迹：</p>
+<h3 id="Trajectory-Augmentation"><a href="#Trajectory-Augmentation" class="headerlink" title="Trajectory Augmentation"></a><strong>Trajectory Augmentation</strong></h3><p>对于签到数据来说，由于其固有的稀疏性，一个时间窗口内子轨迹中的用户签到次数非常有限，而其长期的历史轨迹往往意味着更多的用户运动模式。因此，我们探索了两种不同的轨迹增强策略来生成相互蒸馏学习的长期轨迹：</p>
 <ul>
-<li><em>Neighbor Augmentatio</em>n给定时间间隔 τi 中的输入轨迹 T r，我们在时间间隔 [τi−k/2 : τi+k/2] 中使用 k + 1 个子轨迹按时间顺序形成长期增强轨迹。</li>
+<li><em>Neighbor Augmentatio</em>n 给定时间间隔$ τ<em>i$ 中的输入轨迹 $T_r$，我们在时间间隔 [$τ</em>{i−k/2}$ : $τ_{i+k/2}$] 中使用 k + 1 个子轨迹按时间顺序形成长期增强轨迹。</li>
+<li><em>Random Augmentation</em> 对于输入轨迹，我们从相应用户的所有轨迹中随机抽取 k 个子轨迹，然后根据时间信息形成长期轨迹与输入轨迹。</li>
 </ul>
+<h3 id="Check-in-Embedding-Layer"><a href="#Check-in-Embedding-Layer" class="headerlink" title="*Check-in Embedding Layer    *"></a>*<em>Check-in Embedding Layer    *</em></h3><p>多语义签到嵌入的目标是从稀疏的 one-hot 表示中生成签到（例如位置、类别和时间切片）中每个部分的密集表示。通过这种方式，我们不仅避免了维度的诅咒，还捕获了上下文语义信息。对于每个轨迹，我们实际上有两种序列形式，一种是POI序列，另一种是POI类别序列。我们将周期时间间隔(例如，一天)划分为多个时间片(例如，一个时间片一个小时)，并将签到时间戳映射到相应的时间片。最后，我们分别学习与时间片集成的两个序列的嵌入，如下所示<strong>：</strong></p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f3.PNG" alt="img"></p>
+<p>其中 pi、ci 和 ti 是序列中第 i 个 POI、它的类别和时间片的 one-hot 编码，$W_p$、$W_c$、$W_t$、$b_p$、$b_c$ 和 $b_t$ 是可学习的参数。</p>
+<h2 id="Trajectory-Encoder"><a href="#Trajectory-Encoder" class="headerlink" title="Trajectory Encoder"></a>Trajectory Encoder</h2><p>为了学习轨迹序列中的高阶转换模式，需要设计轨迹编码器。我们注意到输入轨迹和增强的长期轨迹的序列长度差异很大。过于复杂的轨迹编码器不适合处理较短的轨迹，过于简单的轨迹编码器无法捕获长轨迹序列的长期依赖关系。因此，我们分别基于RNN模型和时间感知自注意力网络设计了两种不同的轨迹编码器。</p>
+<h3 id="RNN-based-Encoder"><a href="#RNN-based-Encoder" class="headerlink" title="RNN-based Encoder"></a><strong>RNN-based Encoder</strong></h3><p>由于签到轨迹的稀疏性，我们使用了流行的 RNN 变体，长短期记忆网络 (LSTM)作为用于处理输入轨迹的编码器 fθ (·)。对于签到 POI 和类别序列，我们使用共享编码器 fθ (·) 并选择最后一个时间步的隐藏层嵌入作为两个序列的表示。然后我们使用可学习的参数 α 来平衡两个表示的权重，并通过多层感知器 (MLP) 将它们映射到用户维度，以获得输入轨迹的最终表示:</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f4.PNG" alt="img"></p>
+<p>分别表示签到 POI 序列的嵌入和输入轨迹的类别序列。</p>
+<h3 id="Temporal-aware-Transformer-Encoder"><a href="#Temporal-aware-Transformer-Encoder" class="headerlink" title="Temporal-aware Transformer Encoder"></a><strong>Temporal-aware Transformer Encoder</strong></h3><p>Transformer 架构对于长期和短期依赖关系都非常富有表现力和灵活性，这已被证明在处理长序列方面优于传统序列模型。然而，对于长轨迹序列，需要注意的是，仍然存在一个问题，即时间切片信息不能完全反映轨迹在时间维度上的信息变化(例如，相对访问时间差)。因此，受Zuo et al.的启发，我们设计了一个时间感知位置编码器来替换原始转换器中的位置编码器：</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f5.PNG" alt="img"></p>
+<p>其中 $w_i $是一个可学习的参数，$i $是嵌入维度 ($i$ ≤ 2d) 的顺序,$t_j$是第 j 个检查记录的访问时间戳。</p>
+<p>因此，对于序列中的任意两个 POI 或类别，相对访问时间信息可以通过以下方式捕获：</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f6.PNG" alt="img"></p>
+<p>我们使用改进的时间感知变压器编码器作为增强长期轨迹的轨迹编码器$f_φ$(·)。类似地，共享编码器 $f_φ$(·) 用于处理 POI 和类别序列中的签到，</p>
+<p>并且池化最后一层的嵌入标记以获得两个序列的潜在表示。接下来，我们还使用可学习的参数 β 来平衡两个表示的权重，通过 MLP 预测器获得增强的长期轨迹的最终表示：</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f7.PNG" alt="img"></p>
+<p>分别表示签到POI序列的嵌入和增强长期轨迹的类别序列。</p>
+<h2 id="Mutual-Distillation-Network"><a href="#Mutual-Distillation-Network" class="headerlink" title="Mutual Distillation Network"></a>Mutual Distillation Network</h2><p>与传统的知识蒸馏[Hintonet al.， 2015]  <em>(其核心思想是先训练一个复杂网络模型，然后使用这个复杂网络的输出和数据的真实标签去训练一个更小的网络，因此知识蒸馏框架通常包含了一个复杂模型(被称为Teacher模型)和一个小模型(被称为Student模型)</em>)不同，在这项工作中，我们不严格区分教师和学生网络。两者都是从头开始学习的，而不是从另一个更深的冻结模型中压缩一个新的网络。</p>
+<p>令 $Tr_{in}$ 和 $Tr_{au} $分别表示输入轨迹和增强轨迹。轨迹编码器 $f_θ$ 将$ Tr_{in}$嵌入到$ z^θ<em>{au}$ 中。类似地，$Tr</em>{au} $通过编码器 $f_φ $编码为 $z^φ_{au}$。我们希望编码器网络 $f_θ$ 可以类似于真实标签 y 进行训练，并且具有更多表示能力的长期轨迹的知识可以转移到$f_θ$。在训练期间，损失函数 L1 为：</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f8.PNG" alt="img"></p>
+<p>其中 H(·,·) 指的是传统的交叉熵损失，KL(·,·) 指的是 softmax φ 和 log-softmax ψ 的 Kullback-Leibler 散度。T 是温度，旨在平滑输出，λ 是平衡权重。</p>
+<p>为了最大限度地利用训练数据，我们提出了一种相互蒸馏策略，即交换输入轨迹和增强轨迹进行再训练，使两个轨迹编码器可以看到更多的数据来增强识别能力。在相互蒸馏策略中，编码器 fθ 和 fφ 被协同训练并被视为同伴，而不是学生/教师。具体来说，对于输入轨迹 $Tr_{in}$ 和增强轨迹 $Tr_{au}$，我们交换并将它们发送到不同的编码器以获得 $z^φ<em>{ in}$ 和$ z^θ</em>{au}$ 中的新表示，并计算损失函数 L2如下：</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f9.PNG" alt="img"></p>
+<p>该操作也可以看作是一种数据增强策略。虽然 RNN 编码器不是专门为长期轨迹数据设计的，但在训练期间使用与输入轨迹相关的更多轨迹序列也是有益的。我们优化互蒸馏网络的最终损失函数为：</p>
+<p><img src="/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f10.PNG" alt="img"></p>
 
       
 
@@ -404,7 +439,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Related-Work"><span class="toc-number">3.</span> <span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preliminaries"><span class="toc-number">4.</span> <span class="toc-text">Preliminaries</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Methodology"><span class="toc-number">5.</span> <span class="toc-text">Methodology</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Semantic-Check-in-Embedding"><span class="toc-number">5.1.</span> <span class="toc-text">Multi-Semantic Check-in Embedding</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Related-Work"><span class="toc-number">3.</span> <span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preliminaries"><span class="toc-number">4.</span> <span class="toc-text">Preliminaries</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Methodology"><span class="toc-number">5.</span> <span class="toc-text">Methodology</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Semantic-Check-in-Embedding"><span class="toc-number">5.1.</span> <span class="toc-text">Multi-Semantic Check-in Embedding</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Trajectory-Augmentation"><span class="toc-number">5.1.1.</span> <span class="toc-text">Trajectory Augmentation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Check-in-Embedding-Layer"><span class="toc-number">5.1.2.</span> <span class="toc-text">*Check-in Embedding Layer    *</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trajectory-Encoder"><span class="toc-number">5.2.</span> <span class="toc-text">Trajectory Encoder</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RNN-based-Encoder"><span class="toc-number">5.2.1.</span> <span class="toc-text">RNN-based Encoder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Temporal-aware-Transformer-Encoder"><span class="toc-number">5.2.2.</span> <span class="toc-text">Temporal-aware Transformer Encoder</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mutual-Distillation-Network"><span class="toc-number">5.3.</span> <span class="toc-text">Mutual Distillation Network</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
