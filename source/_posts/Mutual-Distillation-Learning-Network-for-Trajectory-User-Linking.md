@@ -9,6 +9,8 @@ tags: TUL
 
 https://arxiv.org/abs/2205.03773
 
+code:https://github.com/Onedean/MainTUL
+
 # 摘要
 
 由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一种新的**相互蒸馏学习网络**来解决稀疏签到移动数据的 TUL 问题，称为 MainTUL。具体来说，MainTUL 由循环神经网络 (RNN) 轨迹编码器组成，该编码器对输入轨迹的顺序模式和捕获相应增强历史轨迹的长期时间依赖性的时间感知 Transformer 轨迹编码器。然后，在两个轨迹编码器之间传递在历史轨迹上学到的知识来指导两个编码器的学习，以实现信息的相互蒸馏。
@@ -99,3 +101,30 @@ Transformer 架构对于长期和短期依赖关系都非常富有表现力和�
 因此，对于序列中的任意两个 POI 或类别，相对访问时间信息可以通过以下方式捕获：
 
 ![img](Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f6.PNG)
+
+我们使用改进的时间感知变压器编码器作为增强长期轨迹的轨迹编码器$f_φ$(·)。类似地，共享编码器 $f_φ$(·) 用于处理 POI 和类别序列中的签到，
+
+并且池化最后一层的嵌入标记以获得两个序列的潜在表示。接下来，我们还使用可学习的参数 β 来平衡两个表示的权重，通过 MLP 预测器获得增强的长期轨迹的最终表示：
+
+![img](Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f7.PNG)
+
+分别表示签到POI序列的嵌入和增强长期轨迹的类别序列。
+
+## Mutual Distillation Network
+
+与传统的知识蒸馏[Hintonet al.， 2015]  *(其核心思想是先训练一个复杂网络模型，然后使用这个复杂网络的输出和数据的真实标签去训练一个更小的网络，因此知识蒸馏框架通常包含了一个复杂模型(被称为Teacher模型)和一个小模型(被称为Student模型)*)不同，在这项工作中，我们不严格区分教师和学生网络。两者都是从头开始学习的，而不是从另一个更深的冻结模型中压缩一个新的网络。
+
+令 $Tr_{in}$ 和 $Tr_{au} $分别表示输入轨迹和增强轨迹。轨迹编码器 $f_θ$ 将$ Tr_{in}$嵌入到$ z^θ_{au}$ 中。类似地，$Tr_{au} $通过编码器 $f_φ $编码为 $z^φ_{au}$。我们希望编码器网络 $f_θ$ 可以类似于真实标签 y 进行训练，并且具有更多表示能力的长期轨迹的知识可以转移到$f_θ$。在训练期间，损失函数 L1 为：
+
+![img](Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f8.PNG)
+
+其中 H(·,·) 指的是传统的交叉熵损失，KL(·,·) 指的是 softmax φ 和 log-softmax ψ 的 Kullback-Leibler 散度。T 是温度，旨在平滑输出，λ 是平衡权重。
+
+
+为了最大限度地利用训练数据，我们提出了一种相互蒸馏策略，即交换输入轨迹和增强轨迹进行再训练，使两个轨迹编码器可以看到更多的数据来增强识别能力。在相互蒸馏策略中，编码器 fθ 和 fφ 被协同训练并被视为同伴，而不是学生/教师。具体来说，对于输入轨迹 $Tr_{in}$ 和增强轨迹 $Tr_{au}$，我们交换并将它们发送到不同的编码器以获得 $z^φ_{ in}$ 和$ z^θ_{au}$ 中的新表示，并计算损失函数 L2如下：
+
+![img](Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f9.PNG)
+
+该操作也可以看作是一种数据增强策略。虽然 RNN 编码器不是专门为长期轨迹数据设计的，但在训练期间使用与输入轨迹相关的更多轨迹序列也是有益的。我们优化互蒸馏网络的最终损失函数为：
+
+![img](Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f10.PNG)
