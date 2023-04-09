@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f9.PNG">
 <meta property="og:image" content="http://yoursite.com/2023/03/26/Mutual-Distillation-Learning-Network-for-Trajectory-User-Linking/f10.PNG">
 <meta property="article:published_time" content="2023-03-26T08:41:06.000Z">
-<meta property="article:modified_time" content="2023-03-30T10:03:49.423Z">
+<meta property="article:modified_time" content="2023-04-09T07:22:29.176Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="TUL">
 <meta name="twitter:card" content="summary">
@@ -244,6 +244,8 @@
 <p><a href="https://arxiv.org/abs/2205.03773" target="_blank" rel="noopener">https://arxiv.org/abs/2205.03773</a></p>
 <p>code:<a href="https://github.com/Onedean/MainTUL" target="_blank" rel="noopener">https://github.com/Onedean/MainTUL</a></p>
 <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>由于签到移动数据的稀疏性，将轨迹链接到生成它们的用户的轨迹-用户链接 (TUL) 是一个具有挑战性的问题。现有方法忽略了在签到数据中利用历史数据或丰富的上下文特征，导致 TUL 任务性能不佳。在本文中，我们提出了一种新的<strong>相互蒸馏学习网络</strong>来解决稀疏签到移动数据的 TUL 问题，称为 MainTUL。具体来说，MainTUL 由循环神经网络 (RNN) 轨迹编码器组成，该编码器对输入轨迹的顺序模式和捕获相应增强历史轨迹的长期时间依赖性的时间感知 Transformer 轨迹编码器。然后，在两个轨迹编码器之间传递在历史轨迹上学到的知识来指导两个编码器的学习，以实现信息的相互蒸馏。</p>
+<a id="more"></a>
+
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在这项工作中，我们有兴趣将轨迹与其潜在用户联系起来以检查流动性数据。TUL 本质上可以看作是传统轨迹分类任务的扩展。传统的轨迹测量方法，例如最长公共子序列 (LCSS) 和动态时间规整 (DTW)，可以通过测量未知轨迹和已知轨迹之间的相似性来识别最可能的用户。</p>
 <p>然而，现有的方法仍然有<strong>三个关键的局限性</strong>。首先，所有现有的方法仍然存在数据稀疏的问题，并且在稀疏的签入移动数据集上表现不佳。</p>
 <p>第二，现有方法只关注空间和/或时间特征，而忽略了POI类别等签到数据中丰富的上下文特征。</p>
