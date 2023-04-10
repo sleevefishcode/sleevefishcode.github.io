@@ -2,7 +2,7 @@
 title: Inductive Graph Transformer for Delivery Time Estimation
 date: 2023-04-09 12:58:25
 categories: paper
-tags:[Delivery Time Estimation, Estimated Time of package Arrival, Inductive Graph Transformer, Graph Convolutional Networks]
+tags: [Delivery Time Estimation, Estimated Time of package Arrival, Inductive Graph Transformer, Graph Convolutional Networks]
 ---
 发表于WSDM '23
 
@@ -80,4 +80,36 @@ Transformer[28]、GNN及其变体在许多领域取得了巨大的成功。最�
 
 ![img](Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f1.PNG "图1")
 
-它由两个主要模块组成：1）$T_{HE}$GCN（即Temporal和异构GCN）和2）ETAformer（即带有Transformers的ETA预测）。接下来，我们介绍每个组件的细节。
+它由两个主要模块组成：1）$T_{HE}$GCN（即 $\underline{\text{T}}$emporal和$ \underline{\text{HE}}$terogeneous GCN）和2）ETAformer（即带有Transformers的ETA预测）。接下来，我们介绍每个组件的细节。
+
+## $T_{HE}$GCN
+
+假设$G$=（V，E）是从历史订单导出的订单图，其中V和E分别表示节点集和边集。每个节点𝑣 ∈ V和每条边𝑒 ∈ E与类型映射函数相关联。我们的场景包括四种类型的节点和一种类型的边。因此，所构建的图将是一个异构图。我们首先介绍了GCN如何在同构图上工作，然后展示了如何将卷积算子应用于异构图。在第 𝑙 层递归更新隐藏嵌入 $H^𝑙$ 的同质图上的典型 GCN 定义为:
+
+![img](Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f2.PNG)
+
+其中 W 是可学习的变换矩阵，𝜎 (·) 是非线性函数，例如 ReLu 函数。$\hat{A}$ = $\hat{D}^{−1/2}$ ($A$+$I$) $\hat{D}^{−1/2}$ 是邻接矩阵 A 的重新归一化。$\hat{D}$ = diag(𝑑1, · · · , $𝑑_{| V |}$ ) 是 $A+I$ 的对角度矩阵，其中对角线上的每个条目都等于邻接矩阵的行和 $𝑑_𝑖$ = 1 +$\sum_{j}$$a_{ij}$,在图中每个节点𝑣𝑖 有一个对应的𝐷-维度潜在特征向量h𝑖 ∈ R𝐷 . 初始特征矩阵$H^0$=$[$$h_0$，···，$h_{|V|}$$]^𝑇 $将|V|特征向量堆叠在另一个之上。
+
+为了将图卷积算子应用于异构图，在其他领域提出了一些GCN变体[26，44]。然而，它们在计算上都很昂贵，并且容易过度拟合。受简化同构SGC[34]研究的启发，我们设计了一种异构GCN，它在不影响性能的情况下提高了计算效率。
+
+与SGC[34]相比，我们进一步去除了其变换矩阵，以减少参数搜索空间。这使得我们的模型可以用大规模的数据集进行训练。给定异构图G，我们首先基于节点类型的组合构造一组二分子图。
+
+假设节点类型的数量为𝑛, 二分子图的数量不会超过![img](Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f3.PNG).
+
+详细地说，我们构造了一个子图$G_{𝑖,𝑗}$ 基于两种节点类型从原始图G𝑖 和𝑗. 在G中𝑖,𝑗 , 节点的类型属于𝑖 或𝑗, 以及子图G中的任意两个节点𝑖,𝑗 如果它们在原始图G中连接，则将被链接。
+
+作为G𝑖,𝑗 是无向的，我们有G𝑖,𝑗 = G𝑗,𝑖 . 我们将表示G𝑖,𝑗 的邻接矩阵为A𝑖,𝑗
+
+![img](Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f4.PNG)
+
+如果节点𝑢 ∈ G𝑖,𝑗 与 G𝑖 ∈ G𝑖,𝑗 中的节点𝑣 ∈ G𝑖,𝑗 连接，则每个条目𝑅𝑢𝑣 ∈ R 为 1；否则，𝑅𝑢𝑣 设置为 0。按照 [ 20 ] ，我们还对 A𝑖,𝑗 执行重新归一化技巧，得到 $\hat{A_{ij}}$。为了对二分图(二部图)执行卷积运算，我们更新方程式（1）中的 vanilla（原始的） GCN为：
+
+![img](Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f5.PNG)
+
+其中$H^l_{ij}$表示图$G_{i,j}$中的节点在GCN的第$l$层上的嵌入，假设类型为𝑖的节点数为𝑁𝑖，则H𝑖 ∈$R^{𝑁_𝑖 ×𝐷}$ 是节点类型𝑖的特征矩阵，通过在彼此之上堆叠这种类型的节点。
+
+类似地，$H^l_{i,j}$ ∈ $R^{(𝑁𝑖 +𝑁𝑗 ) ×𝐷}$。请注意，公式3 通过移除折叠权重矩阵和非线性层来简化 vanilla GCN，这通过移除非线性激活进一步简化了 SGC [ 34]。同时，可训练参数的减少可以防止模型过度拟合。线性信息传播使模型能够在计算上是有效的。我们在图 1 中将二分图的这种简化的图卷积命名为二分图中的二分 SGC。
+
+由于一种类型的节点可能涉及多个二部图，同时参与信息传播，我们将每层中每种类型的节点的传播信息聚合如下，
+
+![img]()
