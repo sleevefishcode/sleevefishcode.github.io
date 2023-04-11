@@ -20,8 +20,14 @@
 <meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f3.PNG">
 <meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f4.PNG">
 <meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f5.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f6.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f7.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f8.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f9.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f10.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f11.PNG">
 <meta property="article:published_time" content="2023-04-09T04:58:25.000Z">
-<meta property="article:modified_time" content="2023-04-10T08:11:57.906Z">
+<meta property="article:modified_time" content="2023-04-11T08:12:05.520Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="Delivery Time Estimation">
 <meta property="article:tag" content="Estimated Time of package Arrival">
@@ -218,7 +224,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">3.8k字</span>
+        <span class="post-count">5k字</span>
       </span>
     </span>
 
@@ -227,7 +233,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
+        <span class="post-count">17分</span>
       </span>
     </span>
 </div>
@@ -247,11 +253,11 @@
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>电子商务平台上的零售商向消费者展示有关其产品和服务的各种信息，如价格、描述和预计交付时间。当消费者有收到包裹的最后期限时，交货时间比价格更重要。它已被证明会影响87%的在线消费者的决策。因此，对包裹到达时间（ETA）的准确估计不仅会影响电子商务收入，还会影响消费者的预期。无论是承诺过高还是承诺不足，ETA都可能对在线零售商和消费者造成损害。</p>
 <p>在实践中，由于零售商的包装效率、库存、调度或运输因素，实际交付时间总是存在不确定性。在我们的场景中，我们研究了出发地-目的地（OD）交付时间估计，该估计旨在预测给定零售商、OD地址和付款时间信息的包裹交付时间。尽管OD行程时间估计在运输领域得到了广泛研究，但其挑战通常与交付场景中的OD ETA不同。例如，这两个问题都面临着缺乏路线信息和有效利用时空特征的挑战。然而，交付场景中的OD ETA不可避免地涉及预测与看不见的零售商或地址等的订单。此外，其预测根据多路信号（例如，零售商、地址、支付时间）和这些信号的高阶相互作用而变化很大。</p>
 <p>交通领域的现有工作要求在模型训练期间OD图中的所有地址都存在，使得它们很难被泛化到看不到的旅程；另一项工作利用深度神经网络根据原始特征预测ETA。然而，它们未能捕捉到包属性（例如零售商、地址和支付时间）之间相互作用的高阶语义信息，这也可能会影响 ETA 预测的准确性。最接近的研究是阿里巴巴集团在Ele.me[43]上进行的食品交付时间估计。然而，它侧重于城市层面的食品输送，并强调了它对现有模型特征工程的贡献。</p>
-<p>在<strong>本文</strong>中，我们提出了一种归纳图转换器 (IGT) 来估计国家层面的包交付时间。与当前耦合图转换器 [10, 17] 利用转换器作为 GNN 中信息聚合器的替代相反，我们将 IGT 中的 GNN 和转换器管道解耦。具体来说，我们使用转换器作为回归函数，并将收集到的顺序框架构建到 NLP 的句子中。与语言处理句子中的词类似，我们将零售商、地址和支付时间表示为“元素”。通过这种方式，我们可以将顺序表示为具有不同类型节点（即元素）的异构图，并通过 GNN 的信息传播捕获高阶语义关系。此外，我们通过简化 GNN 并去除非线性激活和线性变换矩阵来使我们的模型适应大规模场景。在以下部分中，我们将根据讨论的上下文交替使用术语“元素”和“节点”。通过我们简化的 GNN，可以根据观察到的相邻元素来近似顺序中看不见元素的嵌入。在实践中，订单具有周期性和反复出现的性质。我们使用门控循环单元 (GRU) 捕获元素的时间演化。最后，我们将订单的节点嵌入和原始特征融合到类似transformer的ETA预测架构中。</p>
+<p>在<strong>本文</strong>中，我们提出了一种<strong>归纳图转换器</strong> (IGT) 来估计国家层面的包交付时间。与当前耦合图transformer [10, 17] 利用Transformer作为 GNN 中信息聚合器的替代相反，我们将 IGT 中的 GNN 和Transformer管道解耦。具体来说，我们使用转换器作为回归函数，并将收集到的顺序框架构建到 NLP 的句子中。与语言处理句子中的词类似，我们将零售商、地址和支付时间表示为“元素”。通过这种方式，我们可以将顺序表示为具有不同类型节点（即元素）的异构图，并通过 GNN 的信息传播捕获高阶语义关系。此外，我们通过简化 GNN 并去除非线性激活和线性变换矩阵来使我们的模型适应大规模场景。在以下部分中，我们将根据讨论的上下文交替使用术语“元素”和“节点”。通过我们简化的 GNN，可以根据观察到的相邻元素来近似顺序中看不见元素的嵌入。在实践中，订单具有周期性和反复出现的性质。我们使用门控循环单元 (GRU) 捕获元素的时间演化。最后，我们将订单的节点嵌入和原始特征融合到类似transformer的ETA预测架构中。</p>
 <p>总之，这项工作的贡献如下：</p>
 <ul>
-<li>我们提出了一种归纳图转换器，用于包交付中的 ETA 预测。我们没有使用 Transformer 作为 GNN 中邻域信息聚合的替代注意力机制，而是使用解耦架构，该架构将提取的异构信息从 GNN 中提取，将订单的原始特征馈送到 Transformer 中进行 ETA 预测</li>
-<li>我们设计了一个简化的异构图卷积网络，可以将高阶语义信息编码为潜在元素嵌入，并使用 GRU 动态更新元素嵌入。具体来说，我们去掉了当前图卷积网络的非线性激活和线性变换矩阵，以适应大规模的工业场景。因此，在IGT中只保留用于信息聚合和传播的线性算子</li>
+<li>我们提出了一种<strong>归纳图转换器（Inductive Graph Transformer）</strong>，用于包交付中的 ETA 预测。我们没有使用 Transformer 作为 GNN 中邻域信息聚合的替代注意力机制，而是使用解耦架构，该架构将提取的异构信息从 GNN 中提取，将订单的原始特征馈送到 Transformer 中进行 ETA 预测</li>
+<li>我们设计了一个简化的<strong>异构图卷积网络</strong>，可以将高阶语义信息编码为潜在元素嵌入，并使用 GRU 动态更新元素嵌入。具体来说，我们去掉了当前图卷积网络的非线性激活和线性变换矩阵，以适应大规模的工业场景。因此，在IGT中只保留用于信息聚合和传播的线性算子</li>
 <li>我们在两个大规模物流数据集上进行了综合实验，结果表明所提出的模型明显优于现有方法</li>
 </ul>
 <h1 id="RELATED-WORK"><a href="#RELATED-WORK" class="headerlink" title="RELATED WORK"></a>RELATED WORK</h1><h2 id="Estimated-Time-of-Arrival（ETA）"><a href="#Estimated-Time-of-Arrival（ETA）" class="headerlink" title="Estimated Time of Arrival（ETA）"></a>Estimated Time of Arrival（ETA）</h2><p>以前的ETA预测方法可以分为两大类:</p>
@@ -286,7 +292,29 @@
 <p>其中$H^l_{ij}$表示图$G_{i,j}$中的节点在GCN的第$l$层上的嵌入，假设类型为𝑖的节点数为𝑁𝑖，则H𝑖 ∈$R^{𝑁_𝑖 ×𝐷}$ 是节点类型𝑖的特征矩阵，通过在彼此之上堆叠这种类型的节点。</p>
 <p>类似地，$H^l_{i,j}$ ∈ $R^{(𝑁𝑖 +𝑁𝑗 ) ×𝐷}$。请注意，公式3 通过移除折叠权重矩阵和非线性层来简化 vanilla GCN，这通过移除非线性激活进一步简化了 SGC [ 34]。同时，可训练参数的减少可以防止模型过度拟合。线性信息传播使模型能够在计算上是有效的。我们在图 1 中将二分图的这种简化的图卷积命名为二分图中的二分 SGC。</p>
 <p>由于一种类型的节点可能涉及多个二部图，同时参与信息传播，我们将每层中每种类型的节点的传播信息聚合如下，</p>
-<p><img src alt="img"></p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f6.PNG" alt="img"></p>
+<p>其中AGGREGATE 是一个聚合函数，𝑛 是节点类型的数量。在这里，我们使用总和聚合。其他聚合算子 [ 4 ] 也可用于聚合属于同一类型的节点的嵌入。在等式(4)，我们使用切片操作来提取𝑖型节点的嵌入。</p>
+<p>每一层中此类信息聚合的一个好处是来自不同类型节点的信息可以完全相互集成。然后将集成的信息馈送到下一层以进行传播。另一个好处是，THEGCN在每次迭代中更新所有节点的嵌入，而不是一批节点，以避免内存陈旧问题（memory staleness problem）</p>
+<p>通过在每一层获得的信息，我们通过聚合所有中间嵌入来更新节点在时间 t-1 的最终嵌入。即：</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f7.PNG" alt="img"></p>
+<p>其中 L 是传播层数。聚合函数 AggREGATE 可以是 [ 4 ] 中讨论的任何函数。在这里，我们使用平均聚合进行最终节点更新。</p>
+<p>为了进一步在时间 t-1 将时间信息融合到已学习的嵌入 $H^{t-1}_i$ 中，我们使用门控机制来控制和管理信息流</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f8.PNG" alt="img"></p>
+<p>其中$Z^t_i$是订单中的𝑖型元素在时间 𝑡 时的原始输入特征向量。在这里，UPDATE 是一个可学习的更新函数，例如循环神经网络，就像 LSTM 或 GRU。在这项工作中，我们采用 GRU 网络，因为它拥有更少的门数，并且与 LSTM 一样有效</p>
+<p>请注意，我们使用从历史订单构建的归一化邻接矩阵来避免模型训练阶段的数据泄漏。然而，在推理阶段，我们使用建立在训练和测试数据[14]上的归一化邻接矩阵。在归纳设置下，我们提出的 THEGCN 可以融合同一个订单xi 内来自其邻居的信息以学习未见节点的嵌入。在极端情况下，xi 中的所有节点在训练中都从未观察到 ，这意味着无法使用邻居信息。GCN 采用 GRU 从原始输入特征中更新节点的嵌入。因此，原始特征将用于估计该订单的交付时间。</p>
+<h2 id="ETAformer"><a href="#ETAformer" class="headerlink" title="ETAformer"></a>ETAformer</h2><p>标准的Transformer被设计用来做单词预测，一个句子被视为一个完全连接的图。在本文的场景中，一个订单类似于一个NLP中的句子，其元素少于数十或者数百。因此，ETA 预测非常适合 Transformer</p>
+<p>可以在这种完全连接的图上训练大型 Transformer 模型。此外，每个单词都关注 Transformer 架构中句子中的所有其他单词，这使得单词之间的高阶交互成为可能。</p>
+<p>在 NLP 中，句子中单词的预测可能因上下文、其他单词等而异。等效地，在我们的场景中，ETA 预测不仅依赖于零售商、地址、支付时间，还有这些特征的高阶交互。</p>
+<p>然而，标准Transformer假设单词被编码在相同的嵌入空间内。</p>
+<p>在实践中，异构图中的节点可能因属于不同类型而在特征大小上有所不同。因此，要将输入特征向量封装到transformer中，我们首先需要<strong>重塑特征空间：</strong></p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f9.PNG" alt="img"></p>
+<p>其中$Z_i$是节点i的原始特征，$h^t_i$是结点i经过THEGCN的输出嵌入，𝑓 是一个映射函数，用于对齐具有相同维度的节点。</p>
+<p>一个直观的函数是使用多层感知器 (MLP) 将不同维空间的特征映射到同一个空间。但是，它为模型引入了额外的参数，因此我们对订单的每个节点采用零填充。</p>
+<p>最后，我们将<strong>订单重塑为</strong>$x^i∈R^{n×W}$,其中n是一个订单中的元素数量，W是每个元素的填充嵌入大小。</p>
+<p>为了捕获订单级别的信息，我们添加了一个类似于 BERT  和 ViT  的可学习<strong>header token</strong>。在实现中，我们使用带有一个隐藏层的 MLP 进行token学习。在位置编码上，现有的graph transformers设计了各种方法来保留节点之间的距离信息。我们的解耦架构利用了transformer的标准位置编码。因为在我们的场景中，一个订单$x_q$可以自然地构建为一个元素序列。将header token $e^{header}_q$和位置编码 $e^{pos}_q$以及x𝑞 的映射节点嵌入e𝑞 输入Transformer变体，在输出后，我们最终使用层归一化 (LN) 和单层 MLP 来预测 ETA，如图 2 所示。</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f10.PNG" alt="img" title="图2"></p>
+<p>形式上，我们将查询订单 x𝑞 的原始特征表示为 z𝑞 = ($z^1_q$, $z^2_q$<code>,...,</code>$z^n_q$ ),其中$Z^i_q$是订单中第i个元素的原始特征。基于类似Transformer的模型对订单xq的ETA预测可以表示如下：</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f11.PNG" alt="img"></p>
 
       
 
@@ -443,7 +471,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RELATED-WORK"><span class="toc-number">3.</span> <span class="toc-text">RELATED WORK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Estimated-Time-of-Arrival（ETA）"><span class="toc-number">3.1.</span> <span class="toc-text">Estimated Time of Arrival（ETA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Route-based-Methods"><span class="toc-number">3.1.1.</span> <span class="toc-text">Route-based Methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OD-based-Methods"><span class="toc-number">3.1.2.</span> <span class="toc-text">OD-based Methods.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-Transformers"><span class="toc-number">3.2.</span> <span class="toc-text">Graph Transformers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PROBLEM-STATEMENT"><span class="toc-number">4.</span> <span class="toc-text">PROBLEM STATEMENT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#INDUCTIVE-GRAPH-TRANSFORMER"><span class="toc-number">5.</span> <span class="toc-text">INDUCTIVE GRAPH TRANSFORMER</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T-HE-GCN"><span class="toc-number">5.1.</span> <span class="toc-text">$T_{HE}$GCN</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RELATED-WORK"><span class="toc-number">3.</span> <span class="toc-text">RELATED WORK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Estimated-Time-of-Arrival（ETA）"><span class="toc-number">3.1.</span> <span class="toc-text">Estimated Time of Arrival（ETA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Route-based-Methods"><span class="toc-number">3.1.1.</span> <span class="toc-text">Route-based Methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OD-based-Methods"><span class="toc-number">3.1.2.</span> <span class="toc-text">OD-based Methods.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-Transformers"><span class="toc-number">3.2.</span> <span class="toc-text">Graph Transformers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PROBLEM-STATEMENT"><span class="toc-number">4.</span> <span class="toc-text">PROBLEM STATEMENT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#INDUCTIVE-GRAPH-TRANSFORMER"><span class="toc-number">5.</span> <span class="toc-text">INDUCTIVE GRAPH TRANSFORMER</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T-HE-GCN"><span class="toc-number">5.1.</span> <span class="toc-text">$T_{HE}$GCN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ETAformer"><span class="toc-number">5.2.</span> <span class="toc-text">ETAformer</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
