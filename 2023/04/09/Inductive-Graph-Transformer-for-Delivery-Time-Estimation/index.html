@@ -26,8 +26,14 @@
 <meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f9.PNG">
 <meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f10.PNG">
 <meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f11.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f12.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f13.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f14.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f15.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f16.PNG">
+<meta property="og:image" content="http://yoursite.com/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f17.PNG">
 <meta property="article:published_time" content="2023-04-09T04:58:25.000Z">
-<meta property="article:modified_time" content="2023-04-11T08:12:05.520Z">
+<meta property="article:modified_time" content="2023-04-13T09:14:14.935Z">
 <meta property="article:author" content="S.F">
 <meta property="article:tag" content="Delivery Time Estimation">
 <meta property="article:tag" content="Estimated Time of package Arrival">
@@ -224,7 +230,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">5k字</span>
+        <span class="post-count">8k字</span>
       </span>
     </span>
 
@@ -233,7 +239,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">17分</span>
+        <span class="post-count">28分</span>
       </span>
     </span>
 </div>
@@ -315,6 +321,49 @@
 <p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f10.PNG" alt="img" title="图2"></p>
 <p>形式上，我们将查询订单 x𝑞 的原始特征表示为 z𝑞 = ($z^1_q$, $z^2_q$<code>,...,</code>$z^n_q$ ),其中$Z^i_q$是订单中第i个元素的原始特征。基于类似Transformer的模型对订单xq的ETA预测可以表示如下：</p>
 <p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f11.PNG" alt="img"></p>
+<h2 id="Model-Training"><a href="#Model-Training" class="headerlink" title="Model Training"></a>Model Training</h2><p>为了训练所提出的 IGT 模型，我们使用 Adam [19] 作为优化器，并使用<strong>平均绝对误差 (MAE)</strong> 作为我们的损失函数。</p>
+<h1 id="EXPERIMENTS"><a href="#EXPERIMENTS" class="headerlink" title="EXPERIMENTS"></a>EXPERIMENTS</h1><h2 id="Experimental-Datasets"><a href="#Experimental-Datasets" class="headerlink" title="Experimental Datasets"></a>Experimental Datasets</h2><p>我们利用从世界最大的电子商务平台之一收集的两个大型物流数据集来评估 IGT 的性能以及基线。</p>
+<p><em>数据描述和统计</em></p>
+<p>第一个数据集包含来自 4,729 个零售商（用 D1 表示）的 8800 万个样本，范围从 2021 年 1 月 3 日到 4 月 22 日。第二个数据集包括从8,741零售商(用D2表示)收集的180万个样本，从2021年6月3日至7月22日不等。</p>
+<p>这两个数据集不仅在图形大小、采集时间上有差异，而且在采集区域上也有差异。这两个数据集都是针对固定接收城市的订单。具体而言，D1是与发送到中国威海的所有订单一起收集的。D2适用于面向中国杭州的包裹。接收城市杭州的人口是威海的3倍。</p>
+<p>对于 ETA 预测，我们遵循时间数据拆分进行<strong>训练、验证和测试</strong>。具体来说，我们将 D1 的最后 25 天的顺序拆分 10:15 作为验证和测试，D2 的最后 15 天 5:10，其他天的顺序用于训练。</p>
+<p>在表1中，我们将看不见的节点（例如，零售商、地址）表示为测试中从未在训练中出现过的节点。请注意，数据集还收集了零售商、付款时间、发件人地址和收件人地址的演变特征。</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f12.PNG" alt="img"></p>
+<h2 id="Comparison-Methods-and-Metrics"><a href="#Comparison-Methods-and-Metrics" class="headerlink" title="Comparison Methods and Metrics"></a>Comparison Methods and Metrics</h2><p>我们将所提出的IGT模型与以下基线进行了比较。</p>
+<ul>
+<li>Linear Regression 通过基于订单的原始特征训练线性回归模型来对订单的交付时间进行建模。</li>
+<li>XGBoost 是一个基于梯度提升决策树的回归模型。输入与LR模型相同。</li>
+<li>MURAT 捕获基础道路网络结构以及用于OD行驶时间估计的时空先验知识。道路信息在我们的数据集中不可用，OD图是基于发送者和接收者地址构建的。</li>
+<li>xDeepFM 在极端深度分解机器框架中以显式和隐式方式学习低级和高阶特征交互。我们将推荐任务转换为 ETA 预测的回归任务</li>
+<li>TEMPrel 是一种基于OD的旅行时间估计方法。它平均所有具有相似起点和目的地的相邻路径的比例行驶时间，以进行ETA预测</li>
+<li>DeepETA 一个端到端的网络，用于估计最后一英里的包裹递送。该算法不仅考虑了路径特征，而且将时间和空间信息编码到深层神经网络中进行ETA预测。由于我们的数据中没有可用的路径信息，因此我们使用发送方和接收方地址作为路径历史</li>
+<li>HetETA 目标是估计出租车在城市内的到达时间。它使用门控卷积神经网络和ChebNet[6]来通过空间和时间视角捕捉两者之间的关系。该方法依赖于轨迹信息。同样，由于我们的数据缺乏这类信息，我们只在公路网上执行Het-ChebNet</li>
+</ul>
+<h2 id="Performance-Comparison"><a href="#Performance-Comparison" class="headerlink" title="Performance Comparison"></a>Performance Comparison</h2><p>我们在MAE、平均绝对百分比误差(MAPE)和平均绝对相对误差(MARE)的度量下对我们的模型和所有基线进行了评估。</p>
+<p>表 2 显示了所提出的 IGT 模型在两个数据集上的基线的性能比较。三个指标的结果表明，我们提出的模型能够将最佳基线提高 6% 以上。尤其是在数据集 D1 上，IGT 比最佳基线显着提高了 11%。与表 1 中的 D2 相比，D1 更稀疏。D1 和 D2 中每个零售商的平均订单数分别为 0.7 和 4.4。D1 和 D2 之间的结果表明 IGT 在稀疏图上表现更好。然而，稀疏性可能部分有助于提高性能。我们从信息论的角度分析了两个数据集的性能差异很大的原因</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f13.PNG" alt="img"></p>
+<p>我们利用熵来量化支付时间下交付时间分布的熵。</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f14.PNG" alt="img"></p>
+<p>$S^t$是在地点t下的订单的交货时间集合，发货时间差异较大的订单，在相同的时间t下单的信息熵更大。</p>
+<p>实验显示数据集D1具有比数据集D2更大的平均熵值。因此，对于所有模型，D1的MAE值都远大于D2。</p>
+<p>对于基线，LR的性能较差，主要是因为它只能使用原始特征进行回归任务。其他回归模型(如XGBoost和xDeepFM)可以捕获特征之间的交互，从而获得更好的性能。TEMPrel在两个数据集上都超过了LR，这意味着空间(即经度、纬度)和时间信息在ETA预测中的重要性。由于MURAT、DeepETA和HetETA的设计目的是利用路线信息进行ETA预测，因此它们的性能有所下降。然而，MURAT和HetETA利用图表示学习来学习OD链接的有意义嵌入，并获得比DeepETA更好的性能。类似地，我们的模型也使用图学习(即GCN)来捕获顺序之间的结构信息。不过，我们专注于节点表示学习和连接零售商、地址和支付时间的链接，链接通过连接这些节点的嵌入来表示。</p>
+<h2 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h2><p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f15.PNG" alt="img"></p>
+<p>IGT的解耦架构使我们可以在不需要另一个组件的前提下对每个组件进行ETA预测。</p>
+<p>首先，为了评估THEGCN，我们将从THEGCN中获得的潜在嵌入拼接到一个单层MLP中，用于ETA预测。ETAformer可以直接处理原始特征。</p>
+<p>结果表明，ETAform在ETA预测方面比THEGCN具有更好的性能。因为ETAform作用于订单间，所以它进一步探索订单元素之间的高阶交互。在表2中比较THEGCN和xDeepFM的性能，我们可以观察到，仅在IGT中使用THEGCN就可以获得与xDeepFM相当的性能。因为THEGCN还能够通过线性信息传播来提取订单间的高阶信息。表2中的训练时间表明THEGCN比ETAformer快得多。THEGCN和ETAformer的组合表现相比于基线有了显著提升。</p>
+<h2 id="Hyper-parameter-Study"><a href="#Hyper-parameter-Study" class="headerlink" title="Hyper-parameter Study"></a>Hyper-parameter Study</h2><p>我们检查了 THEGCN 中节点层数 𝐿 和嵌入大小如何影响 IGT 的性能。我们收集了 IGT 在超参数 𝐿 和 𝐷 在两个数据集上的网格搜索（D1 和 D2）下的 MAE 性能，并在图 5 中绘制热图。我们观察到 THEGCN 中隐藏嵌入的维数𝐷 对 ETA 预测具有更决定性的影响。在 THEGCN 中堆叠太多层可能会导致过度平滑 [21 ] 并退化预测性能。隐藏嵌入维数的一个很好的选择可能取决于数据集中的订单数量。</p>
+<h2 id="Inductive-and-Transductive-Learning-of-IGT"><a href="#Inductive-and-Transductive-Learning-of-IGT" class="headerlink" title="Inductive and Transductive Learning of IGT"></a>Inductive and Transductive Learning of IGT</h2><p>我们进一步分析了关于节点类型和每种节点类型中的阶数的预测结果。特别是，我们考察了在节点没有历史订单的归纳环境下IGT的预测性能。在我们的分析中，我们将IGT与xDeepFM进行比较，以阐明IGT可能提供显著优势的用例</p>
+<p>付款时间。我们在图6中绘制了IGT和xDeepFM关于一天中支付时间的ETA预测性能图，从中我们可以观察到，我们提出的模型在每个支付时间都比最佳基线方法xDeepFM表现出更好的性能。显然，这两种模型的性能在支付时间上都表现出一定的波动。将图6与图3和图4进行比较时，我们发现订单的交付时间的熵与预测结果高度相关。更多的训练订单可能不会改善模型的ETA预测性能。这是合理的，因为较大的熵使模型无法准确估计交货时间。两个模型都在15：00左右对两个数据集显示出较大的预测误差。原因是，快递公司通常在15点左右将收集的包裹派送到下一站，此时之后订购的产品需要等待下一派送时段。在这两个数据集中，我们提出的IGT在峰值附近显示出比xDeepFM略有改善。</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f16.PNG" alt="img"></p>
+<p>零售商和地址。由于这两个数据集都有来自看不见的零售商和地址的订单，我们可以评估IGT在归纳设置下的性能。我们采用数据装箱来减少订单数量相对于零售商和地址的基数。</p>
+<p>具体来说，我们将一名零售商收到的订单数量分为几组：unseen (𝑁 = 0), small (0 &lt; 𝑁 ≤ 100), medium (100 &lt; 𝑁 ≤ 500) and large (500 &lt; 𝑁 )</p>
+<p>类似地，我们将与发送者地址关联的订单数量分成组：unseen (𝑁 = 0), small (0 &lt; 𝑁 ≤ 500), medium (500 &lt; 𝑁 ≤ 1000) and large (1000 &lt; 𝑁 )</p>
+<p>我们在图7中绘制了大小大于50的组的预测性能。在归纳学习环境中，IGT在零售商和地址下的两个数据集上都表现出比xDeepFM更好的预测性能。请注意，IGT将数据集D1的看不见的地址上的MAE值降低了xDeepFM的一半。</p>
+<p><img src="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/f17.PNG" alt="img"></p>
+<p>尽管未见地址上的订单数量相对较少，因为预测值显示出更高的方差，但我们可以看到 IGT 在图 7 左侧归纳学习中优于 xDeepFM</p>
+<p>图7的右边部分显示，对于来自同一零售商或地址的历史订单的积累，这两个模型并不总是学习得很好,尤其是在数据集D1上，零售商的订单数量越多，这两个模型的性能都会降低。与零售商的角度相比，地址上的订单积累显示出在两个数据集上两个模型的持续改进。</p>
+<h1 id="ONLINE-EXPERIMENT"><a href="#ONLINE-EXPERIMENT" class="headerlink" title="ONLINE EXPERIMENT"></a>ONLINE EXPERIMENT</h1><p>为了进一步评估IGT的有效性，我们在线评估其性能。我们对IGT在电子商务平台上的表现进行了为期一周的评估。我们将整个用户请求分成1/10来测试我们的模型。MAE、MAPE和MARE分别为9.86小时、14.36%和15.83%。与表2相比，国家级评估绩效介于D1和D2之间。结果表明，人口较多的城市在预计到达时间上的MAE通常较低。与原始服务模型相比，我们的模型可以将平均预测误差（即MAE）降低15%。</p>
+<h1 id="CONCLUSION-AND-FUTURE-WORK"><a href="#CONCLUSION-AND-FUTURE-WORK" class="headerlink" title="CONCLUSION AND FUTURE WORK"></a>CONCLUSION AND FUTURE WORK</h1><p>在本文中，我们提出了一种归纳图转换器 (IGT) 来估计包交付时间。我们使用解耦架构通过时间和异构 GCN 和元素的交互来捕获订单的高阶交互，以便通过基于转换器的模型。看不见的节点的信息可以通过从模型中的相邻节点传播消息来学习。因此，结构信息和原始特征都可以在基于转换器的模型中用于准确的 ETA 预测。在我们的模型中，IGT，我们通过移除其非线性层和变换矩阵来简化 GCN。这允许工业场景将 IGT 应用于大规模数据集。两个大规模离线后勤数据集的实验结果证明了 IGT 在归纳和转导学习中的有效性。我们进一步评估了该模型在国家层面在线测试的表现。IGT 在电子商务平台上部署时能够增强数十亿客户的用户体验。对于未来的工作，我们将专注于为 ETA 预测而不是点估计提供置信区间。</p>
 
       
 
@@ -471,7 +520,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RELATED-WORK"><span class="toc-number">3.</span> <span class="toc-text">RELATED WORK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Estimated-Time-of-Arrival（ETA）"><span class="toc-number">3.1.</span> <span class="toc-text">Estimated Time of Arrival（ETA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Route-based-Methods"><span class="toc-number">3.1.1.</span> <span class="toc-text">Route-based Methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OD-based-Methods"><span class="toc-number">3.1.2.</span> <span class="toc-text">OD-based Methods.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-Transformers"><span class="toc-number">3.2.</span> <span class="toc-text">Graph Transformers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PROBLEM-STATEMENT"><span class="toc-number">4.</span> <span class="toc-text">PROBLEM STATEMENT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#INDUCTIVE-GRAPH-TRANSFORMER"><span class="toc-number">5.</span> <span class="toc-text">INDUCTIVE GRAPH TRANSFORMER</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T-HE-GCN"><span class="toc-number">5.1.</span> <span class="toc-text">$T_{HE}$GCN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ETAformer"><span class="toc-number">5.2.</span> <span class="toc-text">ETAformer</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">2.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RELATED-WORK"><span class="toc-number">3.</span> <span class="toc-text">RELATED WORK</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Estimated-Time-of-Arrival（ETA）"><span class="toc-number">3.1.</span> <span class="toc-text">Estimated Time of Arrival（ETA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Route-based-Methods"><span class="toc-number">3.1.1.</span> <span class="toc-text">Route-based Methods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OD-based-Methods"><span class="toc-number">3.1.2.</span> <span class="toc-text">OD-based Methods.</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-Transformers"><span class="toc-number">3.2.</span> <span class="toc-text">Graph Transformers</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PROBLEM-STATEMENT"><span class="toc-number">4.</span> <span class="toc-text">PROBLEM STATEMENT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#INDUCTIVE-GRAPH-TRANSFORMER"><span class="toc-number">5.</span> <span class="toc-text">INDUCTIVE GRAPH TRANSFORMER</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#T-HE-GCN"><span class="toc-number">5.1.</span> <span class="toc-text">$T_{HE}$GCN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ETAformer"><span class="toc-number">5.2.</span> <span class="toc-text">ETAformer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Model-Training"><span class="toc-number">5.3.</span> <span class="toc-text">Model Training</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EXPERIMENTS"><span class="toc-number">6.</span> <span class="toc-text">EXPERIMENTS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Experimental-Datasets"><span class="toc-number">6.1.</span> <span class="toc-text">Experimental Datasets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison-Methods-and-Metrics"><span class="toc-number">6.2.</span> <span class="toc-text">Comparison Methods and Metrics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Performance-Comparison"><span class="toc-number">6.3.</span> <span class="toc-text">Performance Comparison</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ablation-Study"><span class="toc-number">6.4.</span> <span class="toc-text">Ablation Study</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hyper-parameter-Study"><span class="toc-number">6.5.</span> <span class="toc-text">Hyper-parameter Study</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inductive-and-Transductive-Learning-of-IGT"><span class="toc-number">6.6.</span> <span class="toc-text">Inductive and Transductive Learning of IGT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ONLINE-EXPERIMENT"><span class="toc-number">7.</span> <span class="toc-text">ONLINE EXPERIMENT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CONCLUSION-AND-FUTURE-WORK"><span class="toc-number">8.</span> <span class="toc-text">CONCLUSION AND FUTURE WORK</span></a></li></ol>
                     </div>
                 </span>
             </div>
