@@ -6,29 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>深度学习常见概念 | S.F blog</title>
+  <title>A Survey of Trajectory-User Linking | S.F blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近学习了CBAM相关的内容，对注意力机制中常见概念记录一下。">
+  <meta name="description" content="摘要本综述旨在全面介绍轨迹-用户链接（TUL）在理解人类流动模式和构建智能应用方面的重要性和潜力。随着基于位置的社交网络（LBSN）平台的快速发展，人们能够通过这些平台共享移动行为数据，为研究人员和从业者提供了理解和预测人类移动模式的机会，促进智能商业模式和提升用户体验。本综述将全面探讨TUL中采用的最新技术和方法，突出它们的优势、局限性和潜在应用。通过了解TUL研究的进展，我们可以深入了解人类的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习常见概念">
-<meta property="og:url" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:title" content="A Survey of Trajectory-User Linking">
+<meta property="og:url" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/index.html">
 <meta property="og:site_name" content="S.F blog">
-<meta property="og:description" content="最近学习了CBAM相关的内容，对注意力机制中常见概念记录一下。">
+<meta property="og:description" content="摘要本综述旨在全面介绍轨迹-用户链接（TUL）在理解人类流动模式和构建智能应用方面的重要性和潜力。随着基于位置的社交网络（LBSN）平台的快速发展，人们能够通过这些平台共享移动行为数据，为研究人员和从业者提供了理解和预测人类移动模式的机会，促进智能商业模式和提升用户体验。本综述将全面探讨TUL中采用的最新技术和方法，突出它们的优势、局限性和潜在应用。通过了解TUL研究的进展，我们可以深入了解人类的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-4f61de5ca32841b3a94b692cafab2ff9_1440w.jpg">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-e50b382e6b27206a1d6820def4d09b7a_1440w.jpg">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-7d250d62d95d7eaa6117df7c6f59b6f2_1440w.jpg">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-89f01a059e33f95f7df961868f829c98_720w.png">
-<meta property="og:image" content="https://pic3.zhimg.com/80/v2-c5ba8e3165eef444b1393b467e7442b6_720w.jpg">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-aeb1ee25a324e80863d977924acb5db5_720w.jpg">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/aow_drv.log">
-<meta property="og:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NjX19jY19f,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2022-04-04T12:29:47.000Z">
-<meta property="article:modified_time" content="2023-03-17T04:42:42.757Z">
+<meta property="og:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688111921926.png">
+<meta property="og:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688111921926.png">
+<meta property="og:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688113584647.png">
+<meta property="og:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688096105886.png">
+<meta property="og:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688095701946.png">
+<meta property="og:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688114666462.png">
+<meta property="article:published_time" content="2023-06-28T07:31:34.000Z">
+<meta property="article:modified_time" content="2023-07-03T10:28:57.934Z">
 <meta property="article:author" content="S.F">
-<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="TUL，Survey">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-4f61de5ca32841b3a94b692cafab2ff9_1440w.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688111921926.png">
   
     <link rel="alternative" href="/atom.xml" title="S.F blog" type="application/atom+xml">
   
@@ -188,14 +186,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-深度学习常见概念" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-A Survey of Trajectory-User Linking" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      深度学习常见概念
+      A Survey of Trajectory-User Linking
     </h1>
   
 
@@ -208,8 +206,8 @@
 
 
 
-<a href="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/" class="archive-article-date">
-  	<time datetime="2022-04-04T12:29:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-04</time>
+<a href="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/" class="archive-article-date">
+  	<time datetime="2023-06-28T07:31:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-28</time>
 </a>
  <!-- 开始添加字数统计-->
         
@@ -218,7 +216,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2k字</span>
+        <span class="post-count">12.5k字</span>
       </span>
     </span>
 
@@ -227,7 +225,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">59分</span>
       </span>
     </span>
 </div>
@@ -238,75 +236,218 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近学习了CBAM相关的内容，对注意力机制中常见概念记录一下。</p>
-<a id="more"></a>
-
-<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>卷积神经网络凭借其强大的特征提取和表达能力，在计算机视觉任务中取得了很好的应用效果，为了进一步提升CNNs的性能，近来的方法会从三个方面考虑：<strong>深度，宽度，基数。</strong></p>
-<p>在深度方面的探索由来已久，VGGNet证明，堆积相同形状的卷积块能取得不错的效果，基于同样的思想，ResNet在堆积的基础上，加入skip connection，通过残差学习，在保证性能不退化的基础上，大大加深了网络层数。<img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-4f61de5ca32841b3a94b692cafab2ff9_1440w.jpg" alt="v2-4f61de5ca32841b3a94b692cafab2ff9_1440w"></p>
-<p>在网络宽度方面，GoogleNet是一个重要尝试，该结构将CNN中常用的卷积（1x1，3x3，5x5）、池化操作（3x3）堆叠在一起（卷积、池化后的尺寸相同，将通道相加），增加了网络的宽度。<img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-e50b382e6b27206a1d6820def4d09b7a_1440w.jpg" alt="v2-e50b382e6b27206a1d6820def4d09b7a_1440w"></p>
-<p>在网络基数方面，Facebook家的ResNeXt是一个很好的工作，何为基数（cardinality）呢？Cardinatity指的是一个block中所具有的相同分支的数目。ResNeXt通过一系列实验证明了，加大基数能够达到甚至超越加大宽度和深度的效果，具有更强的特征表现能力。<img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-7d250d62d95d7eaa6117df7c6f59b6f2_1440w.jpg" alt="v2-7d250d62d95d7eaa6117df7c6f59b6f2_1440w"></p>
-<h4 id="空间域（-Spatial-Domain）"><a href="#空间域（-Spatial-Domain）" class="headerlink" title="空间域（ Spatial Domain）"></a><strong>空间域（ Spatial Domain）</strong></h4><p>空间域的设计思路是通过注意力机制，更关注的是位置特性。将原始图片中的空间信息通过空间转换模块，变换到另一个空间中并保留关键信息。</p>
-<h4 id="通道域（Channel-Domain）"><a href="#通道域（Channel-Domain）" class="headerlink" title="通道域（Channel Domain）"></a><strong>通道域（Channel Domain）</strong></h4><p>通道域的核心思想是，对经过卷积得到的特征图的每一层，乘以不同的权重，表示该层表示的特征对于关键信息的关联程度和重要程度，相应的，权重越大，表示该层表示的信息对于关键信息越重要，关联程度越高；权重越小，表示该层表示的信息对于关键信息越不重要。SeNet是典型的注意力机制模型，得到一个C维卷积层后，通过挤压函数，激励函数，尺度函数，得到每一维的权重，对应乘到不同通道的值上，得到新的特征。</p>
-<p><strong>注意力机制不仅告诉你应该关注哪里，而且还会提升关键区域的特征表达</strong>。这也与识别的目标一致，只关注重要的特征而抑制或忽视无关特征。这样的思想，促成了本文提出的CBAM网络（Convolutional Block Attention Module）。如下图所示，依次用到注意力机制中的通道域模块和空间域模块，通过这两个模块，得到细化后的feature。网络具有了学习“What”和“Where”的能力，让网络更好的知道哪些信息需要强调，哪些信息需要抑制。</p>
-<ul>
-<li><strong>Channel attention module.</strong></li>
+        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>本综述旨在全面介绍轨迹-用户链接（TUL）在理解人类流动模式和构建智能应用方面的重要性和潜力。随着基于位置的社交网络（LBSN）平台的快速发展，人们能够通过这些平台共享移动行为数据，为研究人员和从业者提供了理解和预测人类移动模式的机会，促进智能商业模式和提升用户体验。本综述将全面探讨TUL中采用的最新技术和方法，突出它们的优势、局限性和潜在应用。通过了解TUL研究的进展，我们可以深入了解人类的移动行为，并为智能商业模式、增强用户体验和未来基于轨迹的应用的开发铺平道路。此外，我们还将分析TUL未来研究的潜在领域。综述的目标是全面了解轨迹-用户链接的意义，揭示人类运动模式的重要性，并展示它在各个领域实现智能应用的潜力。通过对现有研究的综合分析，我们希望能够推动TUL领域的进一步探索和研究。</p>
+<p>This review aims to comprehensively introduce the importance and potential of Trajectory-User Linking (TUL) in understanding human mobility patterns and building intelligent applications. With the rapid development of Location-Based Social Networks (LBSN) platforms, people can share their mobile behavior data through these platforms, providing opportunities for researchers and practitioners to understand and predict human mobility patterns, promote intelligent business models, and enhance user experiences. This review will thoroughly explore the latest technologies and methods used in TUL, highlighting their advantages, limitations, and potential applications. By understanding the progress of TUL research, we can gain in-depth insights into human mobility behavior and pave the way for the development of intelligent business models, enhanced user experiences, and future trajectory-based applications. Additionally, we will analyze potential areas of future research in TUL. The goal of this review is to gain a comprehensive understanding of the significance of Trajectory-User Linking (TUL), reveal the importance of human movement patterns, and demonstrate its potential in achieving intelligent applications across various domains. Through a comprehensive analysis of existing research, we hope to promote further exploration and research in the field of TUL.</p>
+<h1 id="introduction"><a href="#introduction" class="headerlink" title="introduction"></a>introduction</h1><p>基于位置的社交网络 (LBSN) 平台的快速发展【0】使得研究人员和从业者有了一个机会来理解人类流动模式并构建各种应用【1】，这些平台中的数据可用于理解和预测人类移动模式，促进智能商业模式和用户体验。理解人类移动模式的一项重要任务是轨迹-用户链接（TUL）[2]，它引起了研究人员的关注。TUL旨在基于个人移动轨迹识别用户身份，使许多实际应用成为可能，例如基于位置的服务【3】，追踪COVID-19大流行[4]、智能交通[5]以及识别恐怖分子/犯罪分子以保障公共安全[6]，更重要的是，TUL已被用于[7]来量化隐私保护移动轨迹合成算法的性能。换句话说，TUL 自 2017 年推出以来，越来越受到研究界的关注。</p>
+<p>尽管目前已经取得了一些进展，但现有的解决方案仍然面临一些挑战，比如缺少标记数据，现有方法仍然受到数据稀疏性的影响【8】以及现有的方法通常依赖于循环神经框架来对轨迹序列进行建模，因此很难捕捉到长序列移动轨迹[9]之间的长期依赖关系等。</p>
+<p>本综述的目标是全面介绍轨迹-用户链接中采用的最新技术和方法。我们将探讨将用户身份与其移动轨迹关联的各种方法，突出它们的优势、局限性和潜在应用。通过了解TUL研究的进展，我们可以深入了解人类的移动行为，并为智能商业模式、增强用户体验和未来基于轨迹的应用的开发铺平道路。在本综述中，我们将讨论与TUL相关的挑战，探讨现有的方法和算法，分析TUL未来研究的潜在领域。</p>
+<p>总之，本综述旨在全面了解轨迹-用户链接的意义，揭示人类运动模式的重要性，并展示它在各个领域实现智能应用的潜力。通过分析和综合现有的研究，我们希望能够阐明TUL领域的进展，并激发对这一令人兴奋的研究领域的进一步探索。</p>
+<p>本文剩下的章节将按照以下安排：第二章介绍TUL问题的相关Preliminaries，第三章叙述现有的一些方法，第四章提出了一些未来发展的个人建议和展望，第五章总结了全篇论文。</p>
+<p>The rapid development of Location-Based Social Networks (LBSN) platforms <strong>[0]</strong> has provided researchers and practitioners with an opportunity to understand human mobility patterns and build various applications [1]. The data available on these platforms can be utilized to comprehend and predict human movement patterns, promoting intelligent business models and enhancing user experiences. One important task in understanding human mobility patterns is Trajectory-User Linking (TUL) [2], which has garnered attention from researchers. TUL aims to identify user identities based on their individual movement trajectories, enabling numerous practical applications such as location-based services [3], tracking the COVID-19 pandemic [4], intelligent transportation [5], and identifying terrorists/criminals for public safety [6]. Moreover, TUL has been employed [7] to quantify the performance of privacy-preserving mobile trajectory synthesis algorithms. In other words, since its introduction in 2017, TUL has been increasingly recognized in the research community.</p>
+<p>Despite some progress made thus far, existing solutions still face challenges such as the lack of labeled data, the impact of data sparsity on current methods [8], and the reliance on recurrent neural frameworks to model trajectory sequences, making it difficult to capture long-term dependencies between long sequences of movement trajectories [9].</p>
+<p>The goal of this review is to comprehensively introduce the latest technologies and methods employed in Trajectory-User Linking. We will explore various approaches to associate user identities with their movement trajectories, highlighting their advantages, limitations, and potential applications. By understanding the progress of TUL research, we can gain in-depth insights into human mobility behavior and pave the way for the development of intelligent business models, enhanced user experiences, and future trajectory-based applications. In this review, we will discuss the challenges related to TUL, examine existing methods and algorithms, and analyze potential areas of future research in TUL.</p>
+<p>In summary, this review aims to gain a comprehensive understanding of the significance of Trajectory-User Linking, reveal the importance of human movement patterns, and demonstrate its potential in achieving intelligent applications across various domains. Through analysis and synthesis of existing research, we hope to shed light on the progress in the field of TUL and inspire further exploration in this exciting research area.</p>
+<p>The remaining sections of this paper will be organized as follows: Chapter 2 introduces the relevant preliminaries of the TUL problem, Chapter 3 describes some existing methods, Chapter 4 proposes some personal recommendations and future prospects for development, and Chapter 5 concludes the entire paper.</p>
+<h1 id="Preliminaries"><a href="#Preliminaries" class="headerlink" title="Preliminaries"></a>Preliminaries</h1><p><strong>Definition 1</strong> (Check-in Record).用户的签到记录，其中可能包含用户标签，时间戳，地点等信息。User check-in records may include user tags, timestamps, location information, and so on.</p>
+<p><strong>Definition 2</strong> (Trajectory). 轨迹是指一系列的签到记录，它由用户在一个时间段内按时间顺序生成。Trajectory refers to a sequence of check-in records generated by a user in chronological order within a specific time period.</p>
+<p><strong>Problem</strong> (Trajectory-User Linking). 假设我们收集了大量的未连接轨迹，这些轨迹由一组用户生成;根据[2，10]，TUL旨在学习一个映射函数，将未链接的轨迹链接到相关用户。</p>
+<p>Suppose we have collected a large number of unlinked trajectories generated by a group of users. According to [2, 10], TUL aims to learn a mapping function that links the unlinked trajectories to the corresponding users.</p>
+<h1 id="TUL-Method"><a href="#TUL-Method" class="headerlink" title="TUL Method"></a>TUL Method</h1><h2 id="TULSN-Siamese-Network-for-Trajectory-user-Linking（2020）"><a href="#TULSN-Siamese-Network-for-Trajectory-user-Linking（2020）" class="headerlink" title="TULSN: Siamese Network for Trajectory-user Linking（2020）"></a>TULSN: Siamese Network for Trajectory-user Linking（2020）</h2><p>该论文提出了一种基于孪生网络的模型，名为TULSN【11】，用于位置社交网络中的轨迹用户链接（TUL）任务。该论文提到：现有的TUL方法要么基于规则，要么基于学习，但它们存在一些限制，比如忽视轨迹中的语义信息或者需要在添加新用户时重新训练。TULSN利用孪生网络来捕捉轨迹中的语义信息，仅需要每个用户的少量标记轨迹即可进行识别。实验结果表明，TULSN在真实世界的数据集上优于之前的方法。该论文还介绍了自注意机制和DR-DeepHash方法，以提高准确性和效率。</p>
+<p>下图是该模型的具体框架图：</p>
+<p>This paper proposes a model called TULSN [11], based on Siamese networks, for the task of Trajectory-User Linking (TUL) in location-based social networks. The paper mentions that existing TUL methods are either rule-based or learning-based, but they have certain limitations, such as ignoring semantic information in trajectories or requiring retraining when adding new users. TULSN utilizes Siamese networks to capture semantic information in trajectories and requires only a small number of labeled trajectories per user for identification. Experimental results demonstrate that TULSN outperforms previous methods on real-world datasets. The paper also introduces self-attention mechanism and DR-DeepHash method to improve accuracy and efficiency.</p>
+<p>The following diagram illustrates the specific framework of the TULSN model:</p>
+<p><img src="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688111921926.png" alt="1688111921926">)<img src="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688111921926.png" alt="1688111921926"></p>
+<p>“TULSN: Siamese Network for Trajectory-user Linking”的主要意义在于提出了一种新颖的基于孪生网络的轨迹用户链接模型（TULSN）。该模型通过捕捉轨迹中的语义信息并仅需要每个用户少量标记的轨迹进行识别，克服了之前方法的局限性。实验结果表明，TULSN在真实世界数据集上优于之前的基准和之前最先进的方法。但是该论文未讨论所提出的TULSN模型的可扩展性。随着用户和轨迹数量的增加，了解模型的性能和计算效率如何受到影响是很重要的。</p>
+<p>在未来的展望方面，论文提出了几个进一步研究的方向。首先，它建议将额外的上下文信息（如时间和分类信息）纳入轨迹用户链接，以提高性能。其次，它建议探索使用其他深度学习架构，如图神经网络，以捕捉轨迹和用户之间的复杂关系。最后，论文强调了在更大、更多样化的数据集上评估所提出方法的重要性，以验证其在不同场景中的有效性。</p>
+<p>总体而言，该论文对轨迹用户链接的贡献以及其未来的展望为时空数据挖掘领域的研究人员提供了宝贵的见解。</p>
+<p>The main significance of “TULSN: Siamese Network for Trajectory-user Linking” lies in the introduction of a novel trajectory-user linking model, TULSN, based on Siamese networks. The model overcomes the limitations of previous methods by capturing semantic information in trajectories and requiring only a small number of labeled trajectories per user for identification. Experimental results demonstrate that TULSN outperforms previous baselines and state-of-the-art methods on real-world datasets. However, the paper does not discuss the scalability of the proposed TULSN model. Understanding how the performance and computational efficiency of the model are affected as the number of users and trajectories increases is important.</p>
+<p>In terms of future prospects, the paper suggests several directions for further research. Firstly, it proposes incorporating additional contextual information such as time and categorical information into trajectory-user linking to improve performance. Secondly, it suggests exploring the use of other deep learning architectures, such as graph neural networks, to capture complex relationships between trajectories and users. Lastly, the paper emphasizes the importance of evaluating the proposed methods on larger and more diverse datasets to validate their effectiveness in different scenarios.</p>
+<p>Overall, the paper provides valuable insights into the contribution of trajectory-user linking and its future prospects for researchers in the field of spatiotemporal data mining.</p>
+<h2 id="Trajectory-User-Linking-with-Attentive-Recurrent-Network（2020-9）"><a href="#Trajectory-User-Linking-with-Attentive-Recurrent-Network（2020-9）" class="headerlink" title="Trajectory-User Linking with Attentive Recurrent Network（2020.9）"></a>Trajectory-User Linking with Attentive Recurrent Network（2020.9）</h2><p>DeepTUL【12】是一个用于解决轨迹-用户链接（TUL）任务的模型，旨在将轨迹与生成它们的用户进行关联。该模型由特征表示层和具有注意机制的循环网络组成。特征表示层将多个控制用户移动性的特征组合起来，以建模高阶和复杂的移动模式。具有注意机制的循环网络捕捉用户移动性的多周期特性，并缓解数据稀疏性问题。DeepTUL是第一个利用多周期移动模式进行准确轨迹-用户链接的模型。它还提供了对轨迹-用户链接的直观解释。该模型在两种类型的真实生活移动数据集上进行了评估，并显示出与现有方法相比的显著改进。总的来说，DeepTUL解决了数据稀疏性【13】、高阶和多周期移动模式【14】以及整合多样特征在轨迹-用户链接中的挑战。</p>
+<p>下图为DeepTUL的整体框架图：</p>
+<p>DeepTUL [12] is a model designed to address the task of Trajectory-User Linking (TUL), aiming to associate trajectories with the users who generate them. The model consists of a feature representation layer and a recurrent network with attention mechanisms. The feature representation layer combines multiple features that control user mobility to model higher-order and complex movement patterns. The recurrent network with attention mechanisms captures the multi-periodic nature of user mobility and mitigates the issue of data sparsity. DeepTUL is the first model that leverages multi-periodic movement patterns for accurate trajectory-user linking. It also provides intuitive explanations for trajectory-user linking. The model is evaluated on two types of real-life mobility datasets and demonstrates significant improvements compared to existing methods. Overall, DeepTUL addresses the challenges of data sparsity [13], higher-order and multi-periodic movement patterns [14], and the integration of diverse features in trajectory-user linking.</p>
+<p>The following diagram illustrates the overall framework of DeepTUL:</p>
+<p><img src="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688113584647.png" alt="1688113584647"></p>
+<p>论文“Trajectory-User Linking with Attentive Recurrent Network”的主要意义在于提出了一种新颖的方法，称为DeepTUL，用于解决轨迹-用户链接（TUL）任务。TUL任务涉及将轨迹与生成它们的用户进行关联，这在个性化推荐系统、基于位置的社交网络和潜在犯罪者识别等领域具有各种应用。该论文强调了以前方法在解决TUL任务方面的局限性，例如由于低采样和稀疏轨迹数据导致的低预测准确性、高阶和多周期用户移动模式以及未能利用现有丰富特征。为了解决这些限制，作者提出了DeepTUL，它由特征表示层、RNN和注意层以及链接层组成。</p>
+<p>特征表示层捕捉了控制用户移动性的多个特征，包括位置、时间戳和用户标识。利用嵌入技术将这些特征转换为稠密表示。RNN和注意层利用双向LSTM和注意机制，捕捉当前轨迹中的高阶和复杂的顺序信息，并从标记的历史轨迹中学习用户移动的多周期性。</p>
+<p>在真实生活的移动数据集上进行的实验表明，DeepTUL在预测准确性方面优于之前的方法。此外，DeepTUL对于轨迹-用户链接提供了直观的解释，这对于理解用户移动模式并在各种应用中做出明智决策非常有价值。论文在两种类型的真实生活移动数据集（签到数据集和WLAN数据集）上评估了DeepTUL。目前尚不清楚该模型在其他类型数据集上的泛化能力如何，以及它是否能在不同场景中取得类似的性能。</p>
+<p>关于未来的工作，该论文建议探索DeepTUL在其他轨迹挖掘任务中的应用，例如下一个点的预测、目的地预测和交通预测。此外，作者提到将其他上下文信息（如天气和社会事件）纳入DeepTUL，以进一步提高预测准确性的潜力。</p>
+<p>“Trajectory-User Linking with Attentive Recurrent Network” paper introduces a novel approach called DeepTUL for solving the Trajectory-User Linking (TUL) task. TUL task involves associating trajectories with the users who generated them, which has various applications in personalized recommendation systems, location-based social networks, and potential criminal identification. The paper highlights the limitations of previous methods in addressing the TUL task, such as low prediction accuracy due to low sampling and sparse trajectory data, higher-order and multi-periodic user movement patterns, and failure to leverage existing rich features. To address these limitations, the authors propose DeepTUL, which consists of a feature representation layer, RNN and attention layer, and linking layer.</p>
+<p>The feature representation layer captures multiple features that control user mobility, including location, timestamps, and user identifiers. These features are transformed into dense representations using embedding techniques. The RNN and attention layer utilize bidirectional LSTM and attention mechanisms to capture higher-order and complex sequential information in the current trajectory and learn the multi-periodicity of user movement from labeled historical trajectories.</p>
+<p>Experiments conducted on real-life mobility datasets demonstrate that DeepTUL outperforms previous methods in terms of prediction accuracy. Additionally, DeepTUL provides intuitive explanations for trajectory-user linking, which is valuable for understanding user movement patterns and making informed decisions in various applications. The paper evaluates DeepTUL on two types of real-life mobility datasets (check-in dataset and WLAN dataset). It is currently unclear how well the model generalizes to other types of datasets and whether it can achieve similar performance in different scenarios.</p>
+<p>Regarding future work, the paper suggests exploring the application of DeepTUL in other trajectory mining tasks, such as next point prediction, destination prediction, and traffic prediction. Furthermore, the authors mention the potential of incorporating additional contextual information (such as weather and social events) into DeepTUL to further improve prediction accuracy.</p>
+<h2 id="Mutual-Distillation-Learning-Network（2022）"><a href="#Mutual-Distillation-Learning-Network（2022）" class="headerlink" title="Mutual Distillation Learning Network（2022）"></a>Mutual Distillation Learning Network（2022）</h2><p>该论文【15】提出了一种名为MainTUL的相互蒸馏学习网络，用于解决稀疏签到移动数据下的轨迹用户链接（TUL）问题。TUL问题涉及将轨迹与生成它们的用户进行链接。论文中提到：现有的TUL方法【16】忽视了历史数据和签到数据中丰富的上下文特征的利用，导致性能较差。</p>
+<p>MainTUL由一个循环神经网络（RNN）轨迹编码器和一个时间感知的Transformer轨迹编码器组成。RNN编码器对输入轨迹的时序模式进行建模，而时间感知的Transformer编码器捕捉增强的历史轨迹的长期时间依赖关系。从历史轨迹中学到的知识在两个编码器之间进行传递，实现了信息的相互蒸馏。</p>
+<p>该论文还引入了一个签到嵌入层，产生与兴趣点（POI）类别和时间信息集成的多语义签到表示。这些表示被馈送到相互蒸馏学习网络中。</p>
+<p>The paper [15] proposes a mutual distillation learning network called MainTUL for solving the trajectory-user linking (TUL) problem in sparse check-in mobile data. The TUL problem involves linking trajectories with the users who generated them. The paper mentions that existing TUL methods [16] overlook the utilization of rich contextual features from historical data and check-in data, leading to poor performance.</p>
+<p>MainTUL consists of a recurrent neural network (RNN) trajectory encoder and a time-aware Transformer trajectory encoder. The RNN encoder models the temporal patterns of input trajectories, while the time-aware Transformer encoder captures long-term temporal dependencies of augmented historical trajectories. Knowledge learned from historical trajectories is transferred between the two encoders, achieving mutual distillation of information.</p>
+<p>The paper also introduces a check-in embedding layer that generates multi-modal check-in representations integrating point of interest (POI) categories and time information. These representations are fed into the mutual distillation learning network.</p>
+<p>下图是MainTUL框架的体系结构</p>
+<p>The following diagram illustrates the overall framework of MainTUL:</p>
+<p><img src="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688096105886.png" alt="1688096105886"></p>
+<p>对两个真实世界的签到移动数据集进行的实验结果表明，MainTUL在准确性和Macro F1分数方面优于现有的基准模型。所提出的模型有效利用了历史数据，提高了TUL的性能。</p>
+<p>MainTUL的主要意义在于解决了在稀疏的签到移动数据中将轨迹与用户进行链接的挑战性问题。它通过利用历史数据、捕捉长期时间依赖关系以及结合POI类别等丰富的上下文特征，克服了现有方法的局限性。随着轨迹数据规模的增加，MainTUL的可扩展性和效率可能成为一个问题。未来的工作可以着重优化模型架构和训练过程，以更有效地处理大规模数据集。</p>
+<p>MainTUL的未来前景包括进一步提高其在稀疏签到移动数据集上的性能，探索不同的轨迹编码器和蒸馏策略，并将该模型应用于实际应用领域，如基于位置的服务、智能交通和公共安全。此外，该模型可以扩展到处理其他类型的轨迹数据，并结合额外的上下文信息，实现更准确的轨迹用户链接。</p>
+<p>The experimental results on two real-world check-in mobile datasets demonstrate that MainTUL outperforms existing benchmark models in terms of accuracy and Macro F1 score. The proposed model effectively utilizes historical data, improving the performance of trajectory-user linking (TUL).</p>
+<p>The significance of MainTUL lies in addressing the challenging problem of linking trajectories with users in sparse check-in mobile data. It overcomes the limitations of existing methods by leveraging historical data, capturing long-term temporal dependencies, and incorporating rich contextual features such as POI categories. However, as the scale of trajectory data increases, the scalability and efficiency of MainTUL may become a concern. Future work could focus on optimizing the model architecture and training process to handle large-scale datasets more efficiently.</p>
+<p>The future prospects of MainTUL include further enhancing its performance on sparse check-in mobile datasets, exploring different trajectory encoders and distillation strategies, and applying the model to practical domains such as location-based services, intelligent transportation, and public safety. Additionally, the model can be extended to handle other types of trajectory data and incorporate additional contextual information for more accurate trajectory-user linking.</p>
+<h2 id="simple-heuristics-Method（2022）"><a href="#simple-heuristics-Method（2022）" class="headerlink" title="simple heuristics Method（2022）"></a>simple heuristics Method（2022）</h2><p>这个方法由【17】提出，该论文讨论了轨迹-用户链接（Trajectory-User Linking，TUL）的问题，即将匿名轨迹与生成它们的用户进行关联。作者认为用户的访问模式在很大程度上是独特的【18】，在足够长的时间内，人类移动模式的高度可预测性，如[19][20]【21】【22】所示。，并提出了一种简单的启发式方法来解决TUL。他们证明对于每条轨迹，仅需要一个签到就足以在85%的时间内正确预测用户的身份。他们还使用非参数分类器（KNN）将TUL扩展到超过10万个用户，比现有方法提高了三个数量级。论文对四个真实世界的数据集进行了实证分析，并将其发现与最先进的结果进行了比较，得出结论认为TUL比通常认为的要容易。</p>
+<p>该论文与TULSN: Siamese Network for Trajectory-user Linking一样使用了KNN算法进行轨迹分类，但不同的是”Trajectory-User Linking Is Easier Than You Think”是一篇关于轨迹用户链接的一般讨论或概述，而”TULSN: Siamese Network for Trajectory-user Linking”则是一篇具体的研究论文，提出了一种名为TULSN的新颖方法，使用孪生网络进行轨迹用户链接，提供了关于所提出模型的更详细的信息，包括其架构和实验结果。</p>
+<p>The method you are referring to is proposed in [17], where the paper discusses the problem of Trajectory-User Linking (TUL), which involves associating anonymous trajectories with the users who generated them. The authors argue that user visit patterns are highly unique [18], and there is a high predictability of human mobility patterns over a sufficiently long period of time, as demonstrated in [19][20][21][22]. They propose a simple heuristic approach to solve TUL. They demonstrate that for each trajectory, only one check-in is sufficient to correctly predict the user’s identity in 85% of cases. They also extend TUL to over 100,000 users using a non-parametric classifier (KNN), achieving an improvement of three orders of magnitude compared to existing methods. The paper presents empirical analyses on four real-world datasets and compares its findings with state-of-the-art results, concluding that TUL is easier than commonly believed.</p>
+<p>The paper “Trajectory-User Linking Is Easier Than You Think” uses the KNN algorithm for trajectory classification, similar to “TULSN: Siamese Network for Trajectory-user Linking.” However, “Trajectory-User Linking Is Easier Than You Think” is a general discussion or overview of trajectory-user linking, while “TULSN: Siamese Network for Trajectory-user Linking” is a specific research paper that proposes a novel method called TULSN, utilizing a Siamese network for trajectory-user linking. It provides more detailed information about the proposed model, including its architecture and experimental results.</p>
+<p>The following formula【17】 describes one of the key steps in the paper:</p>
+<p>下面这个公式【17】叙述了论文中较为关键的一个步骤：</p>
+<p>V_d=\underset{\hat{V} \subset V,|\hat{V}|=d}{\arg \max } \sum_{v \in \hat{V}} v</p>
+<p>\begin{equation}<br>V_d=\underset{\hat{V} \subset V,|\hat{V}|=d}{\arg \max } \sum_{v \in \hat{V}} v<br>\end{equation}</p>
+<p>这个公式的意义是选择一个长度为d的子轨迹中访问的最大ID值的场所作为特征。通过计算所有子轨迹中最大ID值的场所，可以得到一个特征向量，用于轨迹-用户链接的分类任务。这个特征向量的选择是基于数据预处理的方式，通过对用户ID和场所ID进行匿名化和排序，使得每个用户独特的场所（例如家）具有较高的ID值，而其他用户访问的场所具有较低的ID值。因此，通过选择最大ID值的场所作为特征，可以有效地区分不同用户的身份。</p>
+<p>该论文认为，与其学习捕捉个体用户独特的复杂时空移动模式的深度表示，解决TUL可以通过直接应用于原始数据的简单启发式方法来实现。论文通过对四个真实世界数据集（Brightkite、Foursquare、Gowalla和Weeplaces）进行广泛分析，验证了这一论点，并证明启发式方法不仅足以解决TUL问题，而且优于使用复杂模型的现有方法。该论文主要关注于解决TUL问题的启发式方法，而忽视了学习复杂时空移动模式的深度表示的方法。虽然论文认为启发式方法已经足够解决TUL问题，但深度表示方法可能仍然具有一定的优势，特别是在处理更复杂的数据集和更大规模的用户群体时。</p>
+<p>因此，未来的研究可以探索如何结合启发式方法和深度表示方法，以进一步提高TUL的准确性和可扩展性。该论文还指出，以往的TUL研究主要集中在学习捕捉个体用户独特的复杂时空移动模式的深度表示上，但可扩展性是其主要限制之一。现有方法最多只能处理不到1000个目标用户的轨迹数据。因此，该论文呼吁研究社区重新思考现有的解决方案、数据集和评估设置，更加关注人类移动数据的统计特性和本质，特别是社交签到数据。该论文鼓励研究社区在比较结果时保持透明，并提醒读者，该论文的目标不是提出解决TUL问题的新算法，而是邀请研究社区重新思考现有的解决方案、数据集和评估设置，更好地关注人类移动数据的统计特性和本质。</p>
+<p>The formula described in the paper [17] selects the venue with the maximum ID value of the visited place in a sub-trajectory of length d as a feature. By computing the maximum ID values of the venues in all sub-trajectories, a feature vector is obtained for the trajectory-user linking classification task. This feature vector selection is based on a data preprocessing method, where user IDs and venue IDs are anonymized and sorted, such that each user’s unique venues (e.g., home) have higher ID values, while other visited venues have lower ID values. Therefore, by selecting the venue with the maximum ID value as a feature, it effectively distinguishes different users’ identities.</p>
+<p>The paper argues that instead of learning deep representations to capture individual users’ complex spatiotemporal movement patterns, solving trajectory-user linking can be achieved through simple heuristic methods directly applied to the raw data. Through extensive analysis on four real-world datasets (Brightkite, Foursquare, Gowalla, and Weeplaces), the paper validates this point and demonstrates that heuristic methods not only suffice to solve the trajectory-user linking problem but also outperform existing methods that use complex models. The paper primarily focuses on heuristic methods for addressing the trajectory-user linking problem, while overlooking deep representation methods for learning complex spatiotemporal movement patterns. While the paper contends that heuristic methods are sufficient for solving the trajectory-user linking problem, deep representation methods may still have certain advantages, particularly when dealing with more complex datasets and larger user populations. </p>
+<p>Hence, future research could explore how to integrate heuristic methods and deep representation methods to further improve the accuracy and scalability of trajectory-user linking. The paper also points out that previous research in TUL has primarily focused on learning deep representations to capture individual users’ unique and complex spatiotemporal movement patterns, but scalability remains one of its main limitations. Existing methods can handle trajectories data for at most around 1000 target users. Therefore, the paper calls for the research community to rethink existing solutions, datasets, and evaluation settings, and pay more attention to the statistical characteristics and essence of human mobility data, especially social check-in data. It encourages the research community to maintain transparency when comparing results and reminds readers that the paper’s goal is not to propose new algorithms for solving the TUL problem but to invite the research community to rethink existing solutions, datasets, and evaluation settings and better focus on the statistical characteristics and essence of human mobility data.</p>
+<h2 id="TULRN（2022-11）"><a href="#TULRN（2022-11）" class="headerlink" title="TULRN（2022.11）"></a>TULRN（2022.11）</h2><p>研究人员提出了一种新颖的半监督模型，称为TULRN（Trajectory User Linking on Road Networks）【23】，以解决将轨迹与用户进行链接的问题。他们将问题扩展到了道路网络上，并利用道路网络的结构和轨迹的时序特征。所提出的模型包括四个主要组件：将轨迹转换为一系列道路片段，学习道路网络感知的轨迹序列图中节点的表示，使用基于BiLSTM的模块学习轨迹的表示，以及基于每个轨迹的嵌入将轨迹与用户进行链接。在真实世界的数据集上进行的实验证明了所提出的模型优于现有方法。这项研究填补了在道路网络上将轨迹与用户进行链接的空白，并提供了对轨迹和用户之间关系更精确的建模。</p>
+<p>TULRN的主要组件如下：</p>
+<ol>
+<li>组件1：轨迹分段和道路网络匹配<ul>
+<li>根据给定的道路网络和位置信息，将每个轨迹划分为一系列道路片段。</li>
+<li>进行道路网络匹配，将轨迹的采样点对齐到道路网络上【24】【25】。</li>
 </ul>
-<p><strong>核心思想：</strong>利用特征的通道间关系，生成通道注意图</p>
-<p><strong>输入</strong>：C维 feature map</p>
-<p><strong>输出</strong>：1x1xC channel attention map</p>
-<p><strong>步骤：</strong></p>
-<p><strong>（1）</strong>对于输入feature map，分别进行平均池化和最大值池化聚合空间信息，得到两个C维池化特征图，F_avg和F_max。</p>
-<p><strong>（2）</strong>将F_avg和F_max送入包含一个隐层的多层感知器MLP里，得到两个1x1xC的通道注意力图。其中，为了减少参数量，隐层神经元的个数为C/r，r也被称作压缩比。</p>
-<p><strong>（3）</strong>将经过MLP得到的两个通道注意力图进行对应元素相加，激活，得到最终的通道注意力图Mc。</p>
-<p><em>MLP理解：<a href="https://blog.csdn.net/sdsc1314/article/details/106742705" target="_blank" rel="noopener">https://blog.csdn.net/sdsc1314/article/details/106742705</a></em></p>
-<p><strong>几个答疑</strong>：</p>
-<p><strong>（1）为什么要对输入特征进行平均池化和最大池化两种处理方式？</strong></p>
-<p>为了更好的聚合feature map的信息并减少参数量，池化是必不可少的步骤，对于空间信息的聚合，目前普遍采用的是平均池化的方法，但作者认为，最大池化会收集到不同于平均池化的，关于不同目标特征的表示，这对于后续得到更精细的注意力通道图是有帮助的。实验也表明，对于平均池化和最大池化的综合运用，是有助于性能提升的。</p>
-<p><strong>（2）MLP的结构是如何设计的？</strong></p>
-<p>本文用到的是只有一层hidden layer的MLP，非常简单，以W0和W1分别表示隐层权重和输出层权重，那么属性可以表示为：</p>
-<p><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-89f01a059e33f95f7df961868f829c98_720w.png" alt="img"></p>
-<p>此外，W0和W1的参数是共享的。</p>
-<p><strong>综上，通道注意力模块更关注的是“What”属性，也就是什么是对于后续处理有意义的。经过Channel Attention Module之后，我们得到的是一个1x1xC的通道注意力图，图上每一维的权重，表示该维对应的feature map层中，对于关键信息的重要程度和关联程度。</strong></p>
-<ul>
-<li><strong>Spatial attention module.</strong></li>
+</li>
+<li>组件2：道路网络感知的轨迹序列图（RTSG）构建<ul>
+<li>通过合并轨迹序列和道路网络图构建道路网络感知的轨迹序列图（RTSG）。</li>
+<li>将轨迹序列的每个道路片段连接到图中的一条边，将轨迹序列的每个交叉点连接到图中的一个节点。</li>
 </ul>
-<p><strong>核心思想：</strong>利用特征间的空间关系生成空间注意图</p>
-<p><strong>输入</strong>：Channel-refined feature <strong>F’</strong>（经过通道注意力图细化后的feature map）</p>
-<p><strong>输出</strong>：HxW的spatial map</p>
-<p><strong>步骤：</strong></p>
-<p><strong>（1）</strong>对于F’首先沿着通道方向进行最大池化和平均池化，得到两个二维的feature map F_avg和F_max，属性都是1xHxW，将得到的两个feature map进行维度拼接（concatenate），得到拼接后的feature map。</p>
-<p><strong>（2）</strong>对于拼接后的feature map，利用size为7x7的卷积层生成空间注意力图Ms。</p>
-<p><strong>公式表示：</strong></p>
-<p><img src="https://pic3.zhimg.com/80/v2-c5ba8e3165eef444b1393b467e7442b6_720w.jpg" alt="img"></p>
-<p><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/v2-aeb1ee25a324e80863d977924acb5db5_720w.jpg" alt="img"></p>
-<p><strong>几个答疑：</strong></p>
-<p><strong>（1）为什么要沿着维度通道进行平均池化和最大池化？</strong></p>
-<p>作者借鉴ICLR2017的论文《Paying more attention to attention: Improving the performance of convolutional neural networks via attention transfer》，认为沿着通道轴应用池化操作可以有效地突出显示含有关键信息的区域。作者的实验也支持这一观点。</p>
-<p><strong>（2）维度拼接（Concatenate）具体操作过程？</strong></p>
-<p>Concatenate的具体操作是将两个size相同的feature map，在维度方向进行拼接，拼接完成后，新的特征图的通道会是原来两个特征图通道之和。这种操作是进行特征融合的普遍做法。</p>
-<p><strong>综上，空间注意力模块更关注的是“Where”，即哪些位置有关键信息，这对于前面的关注“What”的通道注意力模块是一个补充，成为网络的左膀右臂。</strong></p>
-<ul>
-<li><strong>Arrangement of attention modules</strong></li>
+</li>
+<li>组件3：加权图神经网络（GNN）模块<ul>
+<li>开发了一个加权图神经网络（GNN）模块，用于学习RTSG中节点的表示。</li>
+<li>在节点采样之前，根据Renyi熵计算每条边的权重【26】，以增强节点嵌入的性能。</li>
 </ul>
-<p>我们介绍了通道注意力模块和空间注意力模块，两个模块用什么方式组合是最优的呢？并行还是连续，不同的组合方式会影响网络的表现，作者做了一系列实验表明，<strong>顺序排列比并行排列的结果更好。</strong></p>
-<h4 id="Faster-R-CNN-FPN"><a href="#Faster-R-CNN-FPN" class="headerlink" title="Faster R-CNN-FPN"></a>Faster R-CNN-FPN</h4><p>解读：<a href="http://events.jianshu.io/p/aa659406d8c4" target="_blank" rel="noopener">http://events.jianshu.io/p/aa659406d8c4</a></p>
-<h4 id="卷积核和过滤器的区别"><a href="#卷积核和过滤器的区别" class="headerlink" title="卷积核和过滤器的区别"></a>卷积核和过滤器的区别</h4><p><a href="https://medlen.blog.csdn.net/article/details/109906338" target="_blank" rel="noopener">https://medlen.blog.csdn.net/article/details/109906338</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/92134485" target="_blank" rel="noopener">深度可分离卷积 - 知乎 (zhihu.com)</a></p>
-<ul>
-<li><a href="https://so.csdn.net/so/search?q=卷积核&spm=1001.2101.3001.7020" target="_blank" rel="noopener">卷积核</a>就是由长和宽来指定的，是一个二维的概念。</li>
-<li>而过滤器是是由长、宽和深度指定的，是一个三维的概念。</li>
-<li>过滤器可以看做是卷积核的<a href="https://so.csdn.net/so/search?q=集合&spm=1001.2101.3001.7020" target="_blank" rel="noopener">集合</a>。</li>
-<li>过滤器比卷积核高一个<a href="https://so.csdn.net/so/search?q=维度&spm=1001.2101.3001.7020" target="_blank" rel="noopener">维度</a>——深度。</li>
-<li>卷积层共4个Filter，每个Filter包含了3个Kernel，每个Kernel的大小为3×3</li>
-<li><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/aow_drv.log" alt="img"></li>
+</li>
+<li>组件4：基于BiLSTM的模块和多分类<ul>
+<li>使用基于BiLSTM的模块利用轨迹中的时序特征，学习轨迹的表示。</li>
+<li>基于全连接神经网络和Softmax函数的多分类模块用于根据轨迹嵌入将每个轨迹链接到其拥有者。</li>
 </ul>
-<h4 id="1x1卷积核作用"><a href="#1x1卷积核作用" class="headerlink" title="1x1卷积核作用"></a>1x1卷积核作用</h4><p><a href="https://zhuanlan.zhihu.com/p/40050371" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/40050371</a></p>
-<p><strong>降维/升维</strong></p>
-<h4 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h4><p><a href="https://zhuanlan.zhihu.com/p/58381421" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/58381421</a></p>
-<h4 id="前向传播和反向传博算法"><a href="#前向传播和反向传博算法" class="headerlink" title="前向传播和反向传博算法"></a>前向传播和反向传博算法</h4><p><a href="https://blog.csdn.net/bitcarmanlee/article/details/78819025" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/78819025</a></p>
-<h4 id="resnet-mmdet解读"><a href="#resnet-mmdet解读" class="headerlink" title="resnet-mmdet解读"></a>resnet-mmdet解读</h4><p><a href="https://blog.csdn.net/cc__cc__/article/details/105470864?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;utm_relevant_index=5" target="_blank" rel="noopener">https://blog.csdn.net/cc__cc__/article/details/105470864?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&amp;utm_relevant_index=5</a></p>
-<p>一、ResNet网络中的两种基本残差块<br>由网络结构图可以看出，ResNet-18和ResNet-34使用的为包含2个3×3卷积层的残差块，在源码中对应BasicBlock<br>而更深层的ResNet-50，ResNet-101，ResNet-152使用的残差块则略微复杂一些，在源码中对应Bottleneck</p>
-<p><img src="/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NjX19jY19f,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<p>所提出的TULRN模型利用道路网络的结构和轨迹的时序特征，更准确地将轨迹与其拥有者进行链接，下图是TULRN的整体结构。</p>
+<p>The researchers proposed a novel semi-supervised model called TULRN (Trajectory User Linking on Road Networks) [23] to address the problem of linking trajectories to users. They extended the problem to road networks and leveraged the structure of road networks and the temporal characteristics of trajectories. The proposed model consists of four main components: segmenting trajectories into a series of road segments, learning representations of nodes in the road network-aware trajectory sequence graph, utilizing a BiLSTM-based module to learn trajectory representations, and linking trajectories to users based on trajectory embeddings. Experiments on real-world datasets demonstrated that the proposed model outperforms existing methods. This research fills the gap in linking trajectories to users on road networks and provides a more accurate modeling of the relationship between trajectories and users.</p>
+<p>The main components of TULRN are as follows:</p>
+<ol>
+<li><p>Component 1: Trajectory Segmentation and Road Network Matching</p>
+<ul>
+<li>Each trajectory is divided into a series of road segments based on the given road network and location information.</li>
+<li>Road network matching is performed to align the sampled points of the trajectory to the road network [24][25].</li>
+</ul>
+</li>
+<li><p>Component 2: Road Network-Aware Trajectory Sequence Graph (RTSG) Construction</p>
+<ul>
+<li>A road network-aware trajectory sequence graph (RTSG) is constructed by combining the trajectory sequences and the road network graph.</li>
+<li>Each road segment of the trajectory sequence is connected to an edge in the graph, and each intersection point of the trajectory sequence is connected to a node in the graph.</li>
+</ul>
+</li>
+<li><p>Component 3: Weighted Graph Neural Network (GNN) Module</p>
+<ul>
+<li>A weighted graph neural network (GNN) module is developed to learn the representations of nodes in the RTSG.</li>
+<li>The weights of each edge are calculated based on the Renyi entropy before node sampling to enhance the performance of node embeddings [26].</li>
+</ul>
+</li>
+<li><p>Component 4: BiLSTM-based Module and Multi-Class Classification</p>
+<ul>
+<li>A BiLSTM-based module is used to learn trajectory representations by leveraging the temporal features in the trajectories.</li>
+<li>A multi-class classification module, based on a fully connected neural network and the softmax function, is employed to link each trajectory to its owner based on the trajectory embedding.</li>
+</ul>
+</li>
+</ol>
+<p>The proposed TULRN model utilizes the structure of road networks and the temporal characteristics of trajectories to more accurately link trajectories to their owners. </p>
+<p>The overall structure of TULRN is illustrated in the accompanying figure.</p>
+<p><img src="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688095701946.png" alt="1688095701946"></p>
+<p>TULRN的重要意义在于它能够利用道路网络的结构和轨迹的时序特征，更准确地将轨迹与其拥有者进行链接。通过考虑道路网络信息，TULRN可以更精确地建模轨迹与用户之间的关系，这在路径规划、下一个位置预测和目的地预测等实际应用中具有重要意义。</p>
+<p>在未来的展望方面，TULRN有几个潜在的发展方向：</p>
+<ol>
+<li>考虑时间的轨迹表示：目前，TULRN主要关注轨迹的空间特征。未来的工作可以结合轨迹的时间信息，捕捉时间模式，改进轨迹表示学习的效果。</li>
+<li>扩展到多个平台：TULRN可以扩展到处理跨多个平台的轨迹用户链接，例如整合来自GPS设备、社交媒体签到和交通系统的轨迹。这种扩展需要开发一种新的修剪策略，以高效地搜索扩展的空间。</li>
+<li>整合其他数据源：通过整合其他数据源，如道路交通信息、兴趣点和用户资料，可以增强TULRN的性能。这种整合将为轨迹用户链接提供更丰富的上下文信息，提高链接结果的准确性。</li>
+<li>可扩展性和效率改进：随着轨迹数据量的不断增长，开发可扩展和高效的轨迹用户链接算法非常重要。未来的工作可以集中在优化TULRN的计算效率，以处理大规模数据集。</li>
+</ol>
+<p>总体而言，TULRN为道路网络上的轨迹用户链接打开了新的可能性，未来的研究可以在各个方面进一步探索和增强其能力。</p>
+<p>The significance of TULRN lies in its ability to leverage the structure of road networks and the temporal characteristics of trajectories to more accurately link trajectories to their owners. By considering road network information, TULRN can model the relationship between trajectories and users more precisely, which is crucial for practical applications such as route planning, next-location prediction, and destination prediction.</p>
+<p>In terms of future prospects, TULRN has several potential directions for development:</p>
+<ol>
+<li>Temporal representation of trajectories: Currently, TULRN primarily focuses on the spatial features of trajectories. Future work can incorporate the temporal information of trajectories to capture time patterns and improve the effectiveness of trajectory representation learning.</li>
+<li>Extension to multiple platforms: TULRN can be extended to handle trajectory-user linking across multiple platforms, such as integrating trajectories from GPS devices, social media check-ins, and transportation systems. This extension would require the development of a new pruning strategy to efficiently explore the expanded space.</li>
+<li>Integration of other data sources: By integrating other data sources such as road traffic information, points of interest, and user profiles, the performance of TULRN can be enhanced. This integration would provide richer contextual information for trajectory-user linking and improve the accuracy of the linking results.</li>
+<li>Scalability and efficiency improvements: With the continuous growth of trajectory data, it is crucial to develop scalable and efficient trajectory-user linking algorithms. Future work can focus on optimizing the computational efficiency of TULRN to handle large-scale datasets.</li>
+</ol>
+<p>Overall, TULRN opens up new possibilities for trajectory-user linking on road networks, and future research can further explore and enhance its capabilities in various aspects.</p>
+<h2 id="Contextual-Spatio-Temporal-Graph-Representation-Learning-for-Reinforced-Human-Mobility-Mining"><a href="#Contextual-Spatio-Temporal-Graph-Representation-Learning-for-Reinforced-Human-Mobility-Mining" class="headerlink" title="Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining"></a>Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining</h2><p>该论文提出了一种名为GraphTUL【27】的新方法，用于加强人类移动性挖掘，解决了轨迹-用户链接（TUL）问题。所提出的方法使用了一种对抗网络【28】结合策略梯度【29】的方式来提高识别能力，并利用带标签和无标签的轨迹以半监督的方式解决标签不足的问题。论文还提出了一种新颖的基于图的人类运动表示模型（CGE），以利用用户轨迹中的上下文信息来减轻数据稀疏性和上下文约束问题。在几个真实数据集上进行的实验证明，所提出的方法明显优于之前的基准方法。</p>
+<p>下图为CGE 和 GraphTUL 模型的框架图：</p>
+<p>The paper proposes a new method called GraphTUL【27】 to enhance human mobility mining and address the trajectory-user linking (TUL) problem. The proposed approach utilizes an adversarial network【28】 combined with policy gradient【29】 to improve recognition capability and addresses the issue of limited labels by leveraging labeled and unlabeled trajectories in a semi-supervised manner. The paper also introduces a novel graph-based human motion representation model (CGE) to utilize contextual information from user trajectories, alleviating the challenges of data sparsity and contextual constraints. Experimental results on several real-world datasets demonstrate the significant superiority of the proposed method over previous baseline approaches.</p>
+<p>The following diagram illustrates the framework of the CGE and GraphTUL models:</p>
+<p><img src="/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/ASurveyofTrajectory-UserLinking/1688114666462.png" alt="1688114666462"></p>
+<p>该论文的主要意义在于提出了一种名为GraphTUL的新方法，用于解决人类移动性挖掘中的轨迹-用户链接（TUL）问题。论文通过以半监督的方式利用带标签和无标签的轨迹，解决了将轨迹与用户进行链接的挑战。它引入了一种上下文图嵌入（CGE）模型，用于捕捉用户轨迹中的上下文信息，从而有助于减轻数据稀疏性和上下文约束问题。在轨迹-用户链接和下一个签到预测任务方面，所提出的方法在性能上显著优于现有的基准方法。但是在本文中对于CGE的三个虚拟节点功能的解释有些模糊，并且在实验结果可视化上并不能很好的说明实验效果。</p>
+<p>关于未来的展望，作者建议将人类移动性的更多特征，如用户配置文件和与兴趣点（POI）相关的分类信息，纳入基于图的嵌入框架中，以更好地理解人类运动模式。他们还建议探索使用图卷积网络（GCN）及其变种来学习异构移动性图，这可以实现各种实际应用，如行程推荐、旅行时间估计和交通预测。</p>
+<p>The main contribution of this paper lies in the introduction of a novel method called GraphTUL, which addresses the trajectory-user linking (TUL) problem in human mobility mining. By leveraging labeled and unlabeled trajectories in a semi-supervised manner, the paper successfully tackles the challenge of linking trajectories to users. Additionally, the paper introduces the Context Graph Embedding (CGE) model to capture contextual information from user trajectories, thereby mitigating the issues of data sparsity and contextual constraints. The proposed method outperforms existing baseline approaches significantly in both trajectory-user linking and next check-in prediction tasks.</p>
+<p>However, there are some ambiguities in explaining the functionality of the three virtual nodes in CGE, and the visualizations of experimental results do not fully illustrate the effectiveness.</p>
+<p>Regarding future prospects, the authors suggest incorporating more features of human mobility, such as user profiles and categorical information related to Points of Interest (POI), into the graph-based embedding framework to gain a better understanding of human motion patterns. They also recommend exploring the use of Graph Convolutional Networks (GCN) and its variants to learn heterogeneous mobility graphs, enabling various practical applications, such as itinerary recommendations, travel time estimation, and traffic prediction.</p>
+<h1 id="suggestions-or-issues-for-future-research"><a href="#suggestions-or-issues-for-future-research" class="headerlink" title="suggestions or issues for future research"></a>suggestions or issues for future research</h1><p>未来研究中，关于轨迹-用户链接（TUL）问题可以考虑以下建议和问题：</p>
+<ol>
+<li>模型的可解释性：当前的TUL方法在预测用户与轨迹之间的链接时，缺乏对结果的解释性。未来的研究可以探索如何增强模型的解释性，例如通过可视化方法、规则提取或生成解释性文本来帮助理解和解释模型的决策过程。</li>
+<li>处理不完整和噪声数据：实际应用中，轨迹数据往往存在不完整和噪声的情况，如缺失数据、错误数据或异常数据。未来的研究可以关注如何处理这些问题，例如通过数据补全技术、异常检测和数据清洗方法来提高TUL方法的鲁棒性和准确性。</li>
+<li>考虑不同的移动模式和场景：人类的移动行为在不同的时间、地点和场景下可能呈现出多样化的模式。未来的研究可以探索如何根据不同的移动模式和场景来设计更精确的TUL模型，以更好地捕捉和预测用户的移动行为。</li>
+<li>跨数据源的链接：现实中，用户的轨迹数据可能来自不同的数据源，如社交媒体、移动应用等。未来的研究可以关注如何实现跨数据源的TUL，即将来自不同数据源的轨迹数据链接到对应的用户，以提供更全面和准确的用户行为分析。</li>
+<li>隐私保护和数据安全：在进行TUL任务时，保护用户的隐私和数据安全至关重要。未来的研究可以探索隐私保护技术和数据安全机制，确保在处理用户轨迹数据时保护用户的个人隐私和敏感信息。</li>
+<li>实时和增量式的TUL方法：随着移动数据的不断生成和更新，实时和增量式的TUL方法具有重要意义。未来的研究可以关注如何设计高效的实时TUL模型，以便及时处理新生成的轨迹数据并更新用户链接。</li>
+</ol>
+<p>通过对这些建议和问题进行研究，未来的TUL研究可以进一步提高模型的性能和适用性，推动人类移动行为分析领域的发展，并在个性化推荐、城市规划、交通管理等领域中发挥更大的作用。</p>
+<p>In future research, the following suggestions and questions can be considered regarding the trajectory-user linking (TUL) problem:</p>
+<ol>
+<li>Model interpretability: Current TUL methods lack interpretability in predicting the links between users and trajectories. Future research can explore ways to enhance the interpretability of the models, such as through visualization techniques, rule extraction, or generating explanatory text to aid in understanding and interpreting the model’s decision-making process.</li>
+<li>Handling incomplete and noisy data: In practical applications, trajectory data often suffers from incompleteness and noise, such as missing, erroneous, or outlier data. Future research can focus on how to address these issues, such as using data imputation techniques, anomaly detection, and data cleaning methods to improve the robustness and accuracy of TUL methods.</li>
+<li>Considering different mobility patterns and scenarios: Human mobility behavior may exhibit diverse patterns in different times, locations, and scenarios. Future research can explore how to design more accurate TUL models based on different mobility patterns and scenarios to better capture and predict users’ movement behaviors.</li>
+<li>Cross-data-source linking: In reality, users’ trajectory data may come from different data sources, such as social media, mobile applications, etc. Future research can focus on achieving cross-data-source TUL, i.e., linking trajectory data from different sources to the corresponding users, to provide a more comprehensive and accurate analysis of user behaviors.</li>
+<li>Privacy preservation and data security: Protecting users’ privacy and data security is crucial when performing TUL tasks. Future research can explore privacy-preserving techniques and data security mechanisms to ensure the protection of users’ personal privacy and sensitive information when handling their trajectory data.</li>
+<li>Real-time and incremental TUL methods: With the continuous generation and updates of mobile data, real-time and incremental TUL methods are of great significance. Future research can focus on designing efficient real-time TUL models to process newly generated trajectory data promptly and update user links.</li>
+</ol>
+<p>By conducting research on these suggestions and questions, future TUL studies can further enhance the performance and applicability of the models, driving advancements in the field of human mobility analysis, and playing a greater role in areas such as personalized recommendations, urban planning, and traffic management.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>本综述全面介绍了轨迹-用户链接（TUL）在理解人类流动模式和构建智能应用方面的重要性和潜力。随着基于位置的社交网络（LBSN）平台的发展【30】，共享的移动行为数据为研究人员和从业者提供了理解和预测人类移动模式的机会，同时也促进了智能商业模式的发展并提升用户体验。</p>
+<p>通过对TUL领域中最新技术和方法的探讨，我们发现它们在人类移动模式理解和智能应用方面具有明显的优势。然而，我们也必须认识到存在一些局限性和挑战。未来的研究可以着重解决如何更好地利用用户的上下文信息，例如兴趣、偏好和社交关系，以提高轨迹-用户链接的准确性和个性化能力。此外，将TUL应用于实际场景，如城市规划、交通管理和个性化推荐等领域，具有广泛的社会影响。</p>
+<p>综述的目标是深入了解轨迹-用户链接的意义，并展示它在各个领域实现智能应用的潜力。综合分析表明，TUL领域具有进一步探索和研究的机会，这将推动我们对人类移动模式的深入理解，并为未来的智能应用提供有力的支持和指导。</p>
+<p>This review comprehensively introduces the importance and potential of trajectory-user linking (TUL) in understanding human mobility patterns and building intelligent applications. With the development of location-based social network (LBSN) platforms [30], shared mobile behavioral data provides researchers and practitioners with opportunities to understand and predict human mobility patterns while promoting the development of intelligent business models and enhancing user experiences.</p>
+<p>Through discussions on the latest technologies and methods in the TUL field, we have identified their significant advantages in understanding human mobility patterns and enabling intelligent applications. However, we must also acknowledge that there are limitations and challenges. Future research can focus on addressing how to better utilize user context information, such as interests, preferences, and social relationships, to improve the accuracy and personalization capabilities of trajectory-user linking. Additionally, applying TUL to practical scenarios, such as urban planning, traffic management, and personalized recommendations, holds broad social implications.</p>
+<p>The objective of this review is to gain in-depth understanding of the significance of trajectory-user linking and showcase its potential in enabling intelligent applications across various domains. The comprehensive analysis indicates that the TUL field offers opportunities for further exploration and research, which will advance our understanding of human mobility patterns and provide strong support and guidance for future intelligent applications.</p>
+<h1 id="references"><a href="#references" class="headerlink" title="references"></a>references</h1><p>@article{Wang_Cao_Yu_2022,   title={Deep Learning for Spatio-Temporal Data Mining: A Survey},  url={<a href="http://dx.doi.org/10.1109/tkde.2020.3025580}" target="_blank" rel="noopener">http://dx.doi.org/10.1109/tkde.2020.3025580}</a>,  DOI={10.1109/tkde.2020.3025580},  journal={IEEE Transactions on Knowledge and Data Engineering},  author={Wang, Senzhang and Cao, Jiannong and Yu, Philip S.},  year={2022},  month={Aug},  pages={3681–3700},  language={en-US}  }</p>
+<p>@inproceedings{Lian_Wu_Ge_Xie_Chen_2020,   title={Geography-Aware Sequential Location Recommendation},  url={<a href="http://dx.doi.org/10.1145/3394486.3403252}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/3394486.3403252}</a>,  DOI={10.1145/3394486.3403252},  booktitle={Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining},  author={Lian, Defu and Wu, Yongji and Ge, Yong and Xie, Xing and Chen, Enhong},  year={2020},  month={Aug},  language={en-US}  }</p>
+<p>@inproceedings{Gao_Zhou_Zhang_Trajcevski_Luo_Zhang_2017,   title={Identifying Human Mobility via Trajectory Embeddings},  url={<a href="http://dx.doi.org/10.24963/ijcai.2017/234}" target="_blank" rel="noopener">http://dx.doi.org/10.24963/ijcai.2017/234}</a>,  DOI={10.24963/ijcai.2017/234},  booktitle={Proceedings of the Twenty-Sixth International Joint Conference on Artificial Intelligence},  author={Gao, Qiang and Zhou, Fan and Zhang, Kunpeng and Trajcevski, Goce and Luo, Xucheng and Zhang, Fengli},  year={2017},  month={Aug},  language={en-US}  }</p>
+<p>@inproceedings{Liu_Wang_Yao_Yin_2019,   title={Geo-ALM: POI Recommendation by Fusing Geographical Information and Adversarial Learning Mechanism},  url={<a href="http://dx.doi.org/10.24963/ijcai.2019/250}" target="_blank" rel="noopener">http://dx.doi.org/10.24963/ijcai.2019/250}</a>,  DOI={10.24963/ijcai.2019/250},  booktitle={Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence},  author={Liu, Wei and Wang, Zhi-Jie and Yao, Bin and Yin, Jian},  year={2019},  month={Aug},  language={en-US}  }</p>
+<p>@inproceedings{Hao_Chen_Xu_Li_2020,   title={Understanding the Urban Pandemic Spreading of COVID-19 with Real World Mobility Data},  url={<a href="http://dx.doi.org/10.1145/3394486.3412860}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/3394486.3412860}</a>,  DOI={10.1145/3394486.3412860},  booktitle={Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining},  author={Hao, Qianyue and Chen, Lin and Xu, Fengli and Li, Yong},  year={2020},  month={Aug},  language={en-US}  }</p>
+<p>@inproceedings{Dai_Wang_Huang_Yu_Dong_2021,   title={Temporal Multi-view Graph Convolutional Networks for Citywide Traffic Volume Inference},  url={<a href="http://dx.doi.org/10.1109/icdm51629.2021.00120}" target="_blank" rel="noopener">http://dx.doi.org/10.1109/icdm51629.2021.00120}</a>,  DOI={10.1109/icdm51629.2021.00120},  booktitle={2021 IEEE International Conference on Data Mining (ICDM)},  author={Dai, Shaojie and Wang, Jinshuai and Huang, Chao and Yu, Yanwei and Dong, Junyu},  year={2021},  month={Dec},  language={en-US}  }</p>
+<p>@inproceedings{Huang_Zhang_Zheng_Chawla_2018,   title={DeepCrime},  url={<a href="http://dx.doi.org/10.1145/3269206.3271793}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/3269206.3271793}</a>,  DOI={10.1145/3269206.3271793},  booktitle={Proceedings of the 27th ACM International Conference on Information and Knowledge Management},  author={Huang, Chao and Zhang, Junbo and Zheng, Yu and Chawla, Nitesh V.},  year={2018},  month={Oct},  language={en-US}  }</p>
+<p>@article{Rao_Gao_Kang_Huang_2020,   title={LSTM-TrajGAN: A Deep Learning Approach to Trajectory Privacy Protection},  journal={Geographic Information Science},  author={Rao, Jinmeng and Gao, Song and Kang, Yuhao and Huang, Qunying},  year={2020},  month={Jan},  language={en-US}  }</p>
+<p>@inbook{Lian_Zhu_Xie_Chen_2014,   title={Analyzing Location Predictability on Location-Based Social Networks},  url={<a href="http://dx.doi.org/10.1007/978-3-319-06608-0_9}" target="_blank" rel="noopener">http://dx.doi.org/10.1007/978-3-319-06608-0_9}</a>,  DOI={10.1007/978-3-319-06608-0_9},  booktitle={Advances in Knowledge Discovery and Data Mining,Lecture Notes in Computer Science},  author={Lian, Defu and Zhu, Yin and Xie, Xing and Chen, Enhong},  year={2014},  month={Jan},  pages={102–113},  language={en-US}  }</p>
+<p>@inproceedings{Khandelwal_He_Qi_Jurafsky_2018,   title={Sharp Nearby, Fuzzy Far Away: How Neural Language Models Use Context},  url={<a href="http://dx.doi.org/10.18653/v1/p18-1027}" target="_blank" rel="noopener">http://dx.doi.org/10.18653/v1/p18-1027}</a>,  DOI={10.18653/v1/p18-1027},  booktitle={Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},  author={Khandelwal, Urvashi and He, He and Qi, Peng and Jurafsky, Dan},  year={2018},  month={Jan},  language={en-US}  }</p>
+<p>@inproceedings{Zhou_Gao_Trajcevski_Zhang_Zhong_Zhang_2018,   title={Trajectory-user linking via variational autoencoder},  url={<a href="http://dx.doi.org/10.24963/ijcai.2018/446}" target="_blank" rel="noopener">http://dx.doi.org/10.24963/ijcai.2018/446}</a>,  DOI={10.24963/ijcai.2018/446},  booktitle={Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence},  author={Zhou, Fan and Gao, Qiang and Trajcevski, Goce and Zhang, Kunpeng and Zhong, Ting and Zhang, Fengli},  year={2018},  month={Jul},  language={en-US}  }</p>
+<p>@inproceedings{Yu_Tang_Wang_Wu_Qian_Sun_Xu_2020,   title={TULSN: Siamese Network for Trajectory-user Linking},  url={<a href="http://dx.doi.org/10.1109/ijcnn48605.2020.9206609}" target="_blank" rel="noopener">http://dx.doi.org/10.1109/ijcnn48605.2020.9206609}</a>,  DOI={10.1109/ijcnn48605.2020.9206609},  booktitle={2020 International Joint Conference on Neural Networks (IJCNN)},  author={Yu, Yong and Tang, Haina and Wang, Fei and Wu, Lin and Qian, Tangwen and Sun, Tao and Xu, Yongjun},  year={2020},  month={Jul},  language={en-US}  }</p>
+<p>12@article{Miao_Wang_Yu_Zhang_Qi_2020,   title={Trajectory-User Linking with Attentive Recurrent Network},  journal={Adaptive Agents and Multi-Agents Systems},  author={Miao, Congcong and Wang, Jilong and Yu, Heng and Zhang, Weichen and Qi, Yinyao},  year={2020},  month={May},  language={en-US}  }</p>
+<p>@article{Wang_Yin_Chen_Sun_Sadiq_Zhou_2015,   title={Geo-SAGE: A Geographical Sparse Additive Generative Model for Spatial Item Recommendation},  journal={Cornell University - arXiv},  author={Wang, Weiqing and Yin, Hongzhi and Chen, Ling and Sun, Yizhou and Sadiq, Shazia and Zhou, Xiaofang},  year={2015},  month={Mar},  language={en-US}  }</p>
+<p>@inproceedings{Feng_Li_Zhang_Sun_Meng_Guo_Jin_2018,   title={DeepMove},  url={<a href="http://dx.doi.org/10.1145/3178876.3186058}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/3178876.3186058}</a>,  DOI={10.1145/3178876.3186058},  booktitle={Proceedings of the 2018 World Wide Web Conference on World Wide Web - WWW ’18},  author={Feng, Jie and Li, Yong and Zhang, Chao and Sun, Funing and Meng, Fanchao and Guo, Ang and Jin, Depeng},  year={2018},  month={Jan},  language={en-US}  }</p>
+<p>@article{Chen_Li_Huang_Yu_Jiang_Dong_2022,   title={Mutual Distillation Learning Network for Trajectory-User Linking},  author={Chen, Wei and Li, Shuzhe and Huang, Chao and Yu, Yanwei and Jiang, Yongguo and Dong, Junyu},  year={2022},  month={May},  language={en-US}  }</p>
+<p>@article{Zhou_Dai_Gao_Wang_Zhong_2021,   title={Self-supervised human mobility learning for next location prediction and trajectory classification},  url={<a href="http://dx.doi.org/10.1016/j.knosys.2021.107214}" target="_blank" rel="noopener">http://dx.doi.org/10.1016/j.knosys.2021.107214}</a>,  DOI={10.1016/j.knosys.2021.107214},  journal={Knowledge-Based Systems},  author={Zhou, Fan and Dai, Yurou and Gao, Qiang and Wang, Pengyu and Zhong, Ting},  year={2021},  month={Sep},  pages={107214},  language={en-US}  }</p>
+<p>@article{Najjar_Mede_2022,   title={Trajectory-User Linking Is Easier Than You Think},  author={Najjar, Alameen and Mede, Kyle},  year={2022},  month={Dec},  language={en-US}  }</p>
+<p>@article{de Montjoye_Hidalgo_Verleysen_Blondel_2013,   title={Unique in the Crowd: The privacy bounds of human mobility},  url={<a href="http://dx.doi.org/10.1038/srep01376}" target="_blank" rel="noopener">http://dx.doi.org/10.1038/srep01376}</a>,  DOI={10.1038/srep01376},  journal={Scientific Reports},  author={de Montjoye, Yves-Alexandre and Hidalgo, César A. and Verleysen, Michel and Blondel, Vincent D.},  year={2013},  month={Mar},  language={en-US}  }</p>
+<hr>
+<p>19@article{Brockmann_Hufnagel_Geisel_2006,   title={The scaling laws of human travel},  volume={439},  url={<a href="http://dx.doi.org/10.1038/nature04292}" target="_blank" rel="noopener">http://dx.doi.org/10.1038/nature04292}</a>,  DOI={10.1038/nature04292},  number={7075},  journal={Nature},  author={Brockmann, D. and Hufnagel, L. and Geisel, T.},  year={2006},  month={Jan},  pages={462–465},  language={en-US}  }</p>
+<p>@article{Hasan_Schneider_Ukkusuri_González_2013,   title={Spatiotemporal Patterns of Urban Human Mobility},  volume={151},  url={<a href="http://dx.doi.org/10.1007/s10955-012-0645-0}" target="_blank" rel="noopener">http://dx.doi.org/10.1007/s10955-012-0645-0}</a>,  DOI={10.1007/s10955-012-0645-0},  number={1–2},  journal={Journal of Statistical Physics},  author={Hasan, Samiul and Schneider, Christian M. and Ukkusuri, Satish V. and González, Marta C.},  year={2013},  month={Apr},  pages={304–318},  language={en-US}  }</p>
+<p>@article{González_Hidalgo_Barabási_2008,   title={Understanding individual human mobility patterns},  url={<a href="http://dx.doi.org/10.1038/nature06958}" target="_blank" rel="noopener">http://dx.doi.org/10.1038/nature06958}</a>,  DOI={10.1038/nature06958},  journal={Nature},  author={González, Marta C. and Hidalgo, César A. and Barabási, Albert-László},  year={2008},  month={Jun},  pages={779–782},  language={en-US}  }</p>
+<p>@article{Sadilek_Krumm_2012,   title={Far out: predicting long-term human mobility},  journal={Proceedings of the … AAAI Conference on Artificial Intelligence},  author={Sadilek, Adam and Krumm, John},  year={2012},  month={Jul},  language={en-US}  }</p>
+<hr>
+<p>@article{Sang_Xie_Chen_Zhao_Shang_Zhang_Kalnis,   title={TULRN: Trajectory user linking on road networks},  author={Sang, Yu and Xie, Zhenping and Chen, Wei and Zhao, Lei and Shang, Shuo and Zhang, Xiangliang and Kalnis, Panos}, journal={World Wide Web},<br>  pages={1–17},<br>  year={2022},<br>  publisher={Springer} ,language={en-US}  }</p>
+<p>@article{Fu_Lee_2020,   title={Trembr},  url={<a href="http://dx.doi.org/10.1145/3361741}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/3361741}</a>,  DOI={10.1145/3361741},  journal={ACM Transactions on Intelligent Systems and Technology},  author={Fu, Tao-Yang and Lee, Wang-Chien},  year={2020},  month={Feb},  pages={1–25},  language={en-US}  }</p>
+<p>@inproceedings{Newson_Krumm_2009,   title={Hidden Markov map matching through noise and sparseness},  url={<a href="http://dx.doi.org/10.1145/1653771.1653818}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/1653771.1653818}</a>,  DOI={10.1145/1653771.1653818},  booktitle={Proceedings of the 17th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems},  author={Newson, Paul and Krumm, John},  year={2009},  month={Nov},  language={en-US}  }</p>
+<p>26@inproceedings{Chen_Yin_Wang_Zhao_Zhou_2018,   title={Effective and Efficient User Account Linkage across Location Based Social Networks},  url={<a href="http://dx.doi.org/10.1109/icde.2018.00101}" target="_blank" rel="noopener">http://dx.doi.org/10.1109/icde.2018.00101}</a>,  DOI={10.1109/icde.2018.00101},  booktitle={2018 IEEE 34th International Conference on Data Engineering (ICDE)},  author={Chen, Wei and Yin, Hongzhi and Wang, Weiqing and Zhao, Lei and Zhou, Xiaofang},  year={2018},  month={Apr},  language={en-US}  }</p>
+<p>@article{Gao_Zhou_Zhong_Trajcevski_Yang_Li_2022,   title={Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining},  volume={606},  url={<a href="http://dx.doi.org/10.1016/j.ins.2022.05.049}" target="_blank" rel="noopener">http://dx.doi.org/10.1016/j.ins.2022.05.049}</a>,  DOI={10.1016/j.ins.2022.05.049},  journal={Information Sciences},  author={Gao, Qiang and Zhou, Fan and Zhong, Ting and Trajcevski, Goce and Yang, Xin and Li, Tianrui},  year={2022},  month={Aug},  pages={230–249},  language={en-US}  }</p>
+<p>@article{Goodfellow_Pouget-Abadie_Mirza_Xu_Warde-Farley_Ozair_Courville_Bengio_2017,   title={GAN（Generative Adversarial Nets）},  url={<a href="http://dx.doi.org/10.3156/jsoft.29.5_177_2}" target="_blank" rel="noopener">http://dx.doi.org/10.3156/jsoft.29.5_177_2}</a>,  DOI={10.3156/jsoft.29.5_177_2},  journal={Journal of Japan Society for Fuzzy Theory and Intelligent Informatics},  author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},  year={2017},  month={Oct},  pages={177–177},  language={en-US}  }</p>
+<p>@article{Sutton_McAllester_Singh_Mansour_1999,   title={Policy Gradient Methods for Reinforcement Learning with Function Approximation},  author={Sutton, RichardS. and McAllester, David and Singh, Satinder and Mansour, Yishay},  year={1999},  month={Nov},  language={en-US}  }</p>
+<p>@article{Zheng_2015,   title={Trajectory Data Mining},  url={<a href="http://dx.doi.org/10.1145/2743025}" target="_blank" rel="noopener">http://dx.doi.org/10.1145/2743025}</a>,  DOI={10.1145/2743025},  journal={ACM Transactions on Intelligent Systems and Technology},  author={Zheng, Yu},  year={2015},  month={May},  pages={1–41},  language={en-US}  }</p>
 
       
 
@@ -341,7 +482,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TUL，Survey</a>
         		</li>
       		
 		</ul>
@@ -353,7 +494,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/python/" class="article-tag-list-link color2">python</a>
+        			<a href="/categories/Exam/" class="article-tag-list-link color5">Exam</a>
         		</li>
       		
 		</ul>
@@ -408,7 +549,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2022/04/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2023/06/28/A%20Survey%20of%20Trajectory-User%20Linking/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -422,18 +563,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/03/17/Trajectory-User-Linking-Is-Easier-Than-You-Think/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Trajectory-User Linking Is Easier Than You Think
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/03/28/DL-RPN/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DL-RPN</div>
+    <a href="/2023/04/09/Inductive-Graph-Transformer-for-Delivery-Time-Estimation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Inductive Graph Transformer for Delivery Time Estimation</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -460,7 +592,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#空间域（-Spatial-Domain）"><span class="toc-number">2.</span> <span class="toc-text">空间域（ Spatial Domain）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通道域（Channel-Domain）"><span class="toc-number">3.</span> <span class="toc-text">通道域（Channel Domain）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Faster-R-CNN-FPN"><span class="toc-number">4.</span> <span class="toc-text">Faster R-CNN-FPN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#卷积核和过滤器的区别"><span class="toc-number">5.</span> <span class="toc-text">卷积核和过滤器的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1x1卷积核作用"><span class="toc-number">6.</span> <span class="toc-text">1x1卷积核作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#池化"><span class="toc-number">7.</span> <span class="toc-text">池化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前向传播和反向传博算法"><span class="toc-number">8.</span> <span class="toc-text">前向传播和反向传博算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resnet-mmdet解读"><span class="toc-number">9.</span> <span class="toc-text">resnet-mmdet解读</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-number">2.</span> <span class="toc-text">introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preliminaries"><span class="toc-number">3.</span> <span class="toc-text">Preliminaries</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TUL-Method"><span class="toc-number">4.</span> <span class="toc-text">TUL Method</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TULSN-Siamese-Network-for-Trajectory-user-Linking（2020）"><span class="toc-number">4.1.</span> <span class="toc-text">TULSN: Siamese Network for Trajectory-user Linking（2020）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trajectory-User-Linking-with-Attentive-Recurrent-Network（2020-9）"><span class="toc-number">4.2.</span> <span class="toc-text">Trajectory-User Linking with Attentive Recurrent Network（2020.9）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mutual-Distillation-Learning-Network（2022）"><span class="toc-number">4.3.</span> <span class="toc-text">Mutual Distillation Learning Network（2022）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simple-heuristics-Method（2022）"><span class="toc-number">4.4.</span> <span class="toc-text">simple heuristics Method（2022）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TULRN（2022-11）"><span class="toc-number">4.5.</span> <span class="toc-text">TULRN（2022.11）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Contextual-Spatio-Temporal-Graph-Representation-Learning-for-Reinforced-Human-Mobility-Mining"><span class="toc-number">4.6.</span> <span class="toc-text">Contextual Spatio-Temporal Graph Representation Learning for Reinforced Human Mobility Mining</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#suggestions-or-issues-for-future-research"><span class="toc-number">5.</span> <span class="toc-text">suggestions or issues for future research</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#references"><span class="toc-number">7.</span> <span class="toc-text">references</span></a></li></ol>
                     </div>
                 </span>
             </div>
