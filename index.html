@@ -72,7 +72,7 @@
 			</ul>
 		</nav>
 <nav>
-    总文章数 12
+    总文章数 13
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -177,6 +177,168 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-clickhouse相关知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/12/clickhouse%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">&#39;clickhouse相关知识&#39;</a>
+    </h1>
+  
+
+        
+         
+
+
+<a href="/2023/07/12/clickhouse%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2023-07-12T01:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-12</time>
+</a>
+ <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.9k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->       
+ 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="clickhouse数据库文件存储结构"><a href="#clickhouse数据库文件存储结构" class="headerlink" title="clickhouse数据库文件存储结构"></a>clickhouse数据库文件存储结构</h1><p>ClickHouse 是一个列式存储的数据库管理系统，它的文件存储结构也是基于列式存储的设计。它将表数据分成多个数据块，每个数据块包含一列或多列数据，每列数据都按照一定的压缩算法进行压缩。具体来说，ClickHouse的文件存储结构包括以下几个方面：</p>
+<ol>
+<li>数据块（Block）：ClickHouse将表数据划分为多个数据块进行存储，每个数据块包含一列或多列数据。table_name_partition_id_part_id其中，<code>table_name</code>是表的名称，<code>partition_id</code>是分区的ID，<code>part_id</code>是数据文件在分区中的ID。</li>
+<li>列存储（Column Storage）：ClickHouse采用列式存储，将每列数据按照一定的压缩算法进行压缩，提高了查询效率和存储空间利用率。</li>
+<li>索引（Index）：ClickHouse支持多种索引类型，包括普通索引、主键索引和排序索引等，用于提高查询效率。</li>
+<li>MergeTree：ClickHouse采用了MergeTree存储引擎，支持按照时间戳进行分区和排序，提高了数据的查询和分析效率。</li>
+</ol>
+<h2 id="什么是列式存储"><a href="#什么是列式存储" class="headerlink" title="什么是列式存储"></a>什么是列式存储</h2><p>列式存储是一种数据库存储方式，它将每个数据列单独存储在磁盘上，相比于传统的行式存储方式，它的优势在于能够更加高效地处理分析型查询。</p>
+<p>在列式存储中，每个数据列都是连续存储的，这使得对于特定列的查询非常快速，因为只需要读取该列的数据而不必读取整行数据。此外，由于每个列都是单独存储的，所以可以更好地利用压缩算法来压缩每个列的数据，从而减少磁盘空间的使用。</p>
+<p>相比之下，传统的行式存储将整个行的数据存储在一起，这样对于特定列的查询需要扫描整行数据，因此查询速度较慢。此外，由于每行数据都是单独存储的，所以无法像列式存储那样利用压缩算法来压缩数据。</p>
+<p>总之，列式存储适用于处理大量数据的分析型查询，而行式存储则更适合处理事务型查询</p>
+<p>此外，ClickHouse还使用了索引来提高查询效率。对于MergeTree引擎，ClickHouse会在每个数据文件上创建一个索引文件，用于加速特定列的查找和范围查询操作。索引文件通常使用Bloom Filter等技术来减少磁盘I/O和提高查询性能。</p>
+<h1 id="链接数据库"><a href="#链接数据库" class="headerlink" title="链接数据库"></a>链接数据库</h1><p>在使用JDBC驱动连接ClickHouse进行开发时，需要使用特定的JDBC URL来指定要连接的数据库。</p>
+<p><a href="https://clickhouse.com/docs/zh/interfaces/jdbc" target="_blank" rel="noopener">JDBC驱动 | ClickHouse Docs</a></p>
+<p>ClickHouse-Native-JDBC和clickhouse4j都是第三方驱动，用于连接ClickHouse。ClickHouse-Native-JDBC是一个纯Java的驱动程序，它使用ClickHouse的原生协议进行通信，而clickhouse4j是一个基于Netty的异步驱动程序，它使用HTTP协议与ClickHouse进行通信</p>
+<p>JDBC URL的格式如下：</p>
+<p>jdbc:clickhouse://hostname:port/database</p>
+<p>其中，<code>hostname</code>是ClickHouse服务器的主机名或IP地址，<code>port</code>是ClickHouse服务器的端口号，默认为 <code>8123</code>。<code>database</code>是要连接的数据库名称。</p>
+<h1 id="索引的构建"><a href="#索引的构建" class="headerlink" title="索引的构建"></a>索引的构建</h1><p>在ClickHouse中，索引的构建方式主要涉及到两个方面：主键索引和辅助索引。</p>
+<ol>
+<li><p>主键索引（Primary Index）：<br>主键索引是ClickHouse中最重要的索引类型，它用于唯一标识每一行数据。主键索引的构建方式是通过指定一个或多个列作为主键，并按照主键的顺序对数据进行排序和存储。主键索引的优势在于能够快速地定位和检索特定主键值的数据行。在创建表时，可以使用 <code>PRIMARY KEY</code>关键字来定义主键。</p>
+<p>例如，以下是一个使用单个列作为主键的表定义示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="keyword">id</span> Int32,</span><br><span class="line">  <span class="keyword">name</span> <span class="keyword">String</span>,</span><br><span class="line">  age Int32,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span> = MergeTree()</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上述示例中，<code>id</code>列被指定为主键，数据将按照主键的顺序进行排序和存储。</p>
+</li>
+<li><p>辅助索引（Secondary Index）：<br>辅助索引是在ClickHouse中引入的一种新型索引类型，它允许在非主键列上创建索引，以加速对特定列的查询。辅助索引的构建方式是在指定的列上创建一个Bloom Filter或Range Index结构。Bloom Filter用于快速过滤掉不匹配的数据行，而Range Index用于加速范围查询。</p>
+<p>辅助索引的创建是在表定义时通过使用 <code>INDEX</code>关键字进行指定。以下是一个示例，展示了在 <code>name</code>列上创建一个辅助索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="keyword">id</span> Int32,</span><br><span class="line">  <span class="keyword">name</span> <span class="keyword">String</span>,</span><br><span class="line">  age Int32,</span><br><span class="line">  <span class="keyword">INDEX</span> name_index (<span class="keyword">name</span>) <span class="keyword">TYPE</span> bloom_filter</span><br><span class="line">) <span class="keyword">ENGINE</span> = MergeTree()</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上述示例中，<code>name_index</code>是辅助索引的名称，<code>name</code>列被指定为辅助索引的列，<code>TYPE bloom_filter</code>表示使用Bloom Filter作为辅助索引的类型。</p>
+<p>辅助索引在查询时可以加速特定列的查找和范围查询操作，但需要注意的是，辅助索引会增加存储和维护的成本，并且对写入性能可能会有一定的影响。</p>
+</li>
+</ol>
+<p>总结：在ClickHouse中，主键索引用于唯一标识每一行数据，并通过指定主键列对数据进行排序和存储。辅助索引则用于在非主键列上创建索引，以加速对特定列的查询。辅助索引可以使用Bloom Filter或Range Index结构来提高查询性能。</p>
+<h1 id="索引算法"><a href="#索引算法" class="headerlink" title="索引算法"></a>索引算法</h1><p>在ClickHouse中，索引算法主要分为两类：基于Bloom Filter的索引和Range Index的索引。这些索引算法适用于不同的场景，具体如下：</p>
+<ol>
+<li><p>基于Bloom Filter的索引：<br>Bloom Filter是一种概率数据结构，用于判断一个元素是否属于某个集合，具有高效的空间利用率。在ClickHouse中，Bloom Filter被用作辅助索引的一种类型。它适用于那些需要快速过滤掉不匹配的数据行的查询场景。</p>
+<p>适用场景：</p>
+<ul>
+<li>高基数列：当需要对具有高基数（即唯一值很多）的列进行查询时，Bloom Filter索引可以快速过滤掉不匹配的数据行，减少磁盘I/O和提高查询性能。</li>
+<li>过滤查询：在包含多个过滤条件的查询中，Bloom Filter索引可以快速过滤掉不满足条件的数据行，减少后续查询操作的数据量。</li>
+</ul>
+</li>
+<li><p>Range Index的索引：<br>Range Index是ClickHouse中另一种索引类型，用于加速范围查询操作，如大于、小于、区间等查询条件。Range Index使用一种基于LSM（Log-Structured Merge）树的数据结构，将范围查询条件转换为连续的键值范围，从而快速定位和检索符合条件的数据。</p>
+<p>适用场景：</p>
+<ul>
+<li>范围查询：当需要对特定列进行范围查询操作时，Range Index可以加速查询性能，快速定位符合条件的数据。</li>
+<li>排序查询：Range Index的LSM树结构有助于加速排序查询操作，尤其在大规模数据集上的排序查询效果明显。</li>
+</ul>
+</li>
+</ol>
+<p>需要注意的是，ClickHouse的索引算法选择与数据模型、查询模式和性能需求密切相关。Bloom Filter索引适用于高基数列和过滤查询，而Range Index适用于范围查询和排序查询。在实际应用中，可以根据具体的数据特征和查询需求来选择合适的索引算法，以获得最佳的性能和效果。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Webgis/" class="article-tag-list-link color2">Webgis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/12/clickhouse%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-A Survey of Trajectory-User Linking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1436,107 +1598,6 @@
 
 
   
-    <article id="post-图片测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">图片测试</a>
-    </h1>
-  
-
-        
-         
-
-
-<a href="/2020/04/26/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2020-04-26T06:23:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
- <!-- 开始添加字数统计-->
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">25字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-</div>
-          
-        <!-- 添加完成 -->       
- 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>for test<br></p>
-        
-          <a class="article-more-a" href="/2020/04/26/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1701,6 +1762,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TUL，Survey</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
             
             <div class="clearfix"></div>
